@@ -1,0 +1,75 @@
+@charset "UTF-8";
+code {
+  background: #2db34a;
+  border-radius: 6px;
+  color: #fff;
+  display: block;
+  font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+  padding: 24px 15px;
+  text-align: center;
+}
+
+header,
+section,
+aside,
+footer {
+  margin: 0 1.5% 24px 1.5%;
+}
+
+/* 
+When we float an element, we take it out of the normal flow of the HTML document. This causes the width of that element to default to the width of the content within it. Sometimes, such as when we’re creating columns for a reusable layout, this behavior is not desired. It can be corrected by adding a fixed width property value to each column. Additionally, to prevent floated elements from touching one another, causing the content of one to sit directly next to the content of the other, we can use the margin property to create space between elements.
+*/
+.default {
+  background: none;
+  color: #666;
+}
+
+.group {
+  background: #d6d6d6;
+  border-radius: 6px;
+  clear: both;
+  *zoom: 1;
+}
+
+.group:before, .group:after {
+  content: "";
+  display: table;
+}
+
+.group:after {
+  clear: both;
+}
+
+/* 
+Essentially what the CSS is doing is clearing any floated elements within the element with the class of group and returning the flow of the document back to normal.
+
+More specifically, the :before and :after pseudo-elements, as mentioned in the Lesson 4 exercise, are dynamically generated elements above and below the element with the class of group. Those elements do not include any content and are displayed as table-level elements, much like block-level elements. The dynamically generated element after the element with the class of group is clearing the floats within the element with the class of group, much like the clear from before. And lastly, the element with the class of group itself also clears any floats that may appear above it, in case a left or right float may exist. It also includes a little trickery to get older browsers to play nicely.
+
+It is more code than the clear: both; declaration alone, but it can prove to be quite useful.
+*/
+footer {
+  margin-bottom: 0;
+}
+
+footer code {
+  border: 2px solid black;
+}
+
+section {
+  float: left;
+  width: 63%;
+}
+
+section code {
+  background: red;
+}
+
+aside {
+  float: right;
+  width: 30%;
+}
+
+aside code {
+  background: blue;
+}
+/*# sourceMappingURL=2col_contained.css.map */

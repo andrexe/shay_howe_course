@@ -1,0 +1,48 @@
+@charset "UTF-8";
+code {
+  background: #2db34a;
+  border-radius: 6px;
+  color: #fff;
+  display: block;
+  font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+  padding: 24px 15px;
+  text-align: center;
+}
+
+header,
+section,
+aside,
+footer {
+  margin: 0 1.5% 24px 1.5%;
+}
+
+/* 
+When we float an element, we take it out of the normal flow of the HTML document. This causes the width of that element to default to the width of the content within it. Sometimes, such as when we’re creating columns for a reusable layout, this behavior is not desired. It can be corrected by adding a fixed width property value to each column. Additionally, to prevent floated elements from touching one another, causing the content of one to sit directly next to the content of the other, we can use the margin property to create space between elements.
+*/
+footer {
+  margin-bottom: 0;
+  clear: both;
+}
+
+footer code {
+  border: 2px solid black;
+}
+
+section {
+  float: left;
+  width: 63%;
+}
+
+section code {
+  background: red;
+}
+
+aside {
+  float: right;
+  width: 30%;
+}
+
+aside code {
+  background: blue;
+}
+/*# sourceMappingURL=2col.css.map */
