@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Lists in HTML</title>
+</head>
+
+<body>
+
+    <h1>Lists in HTML</h1>
+    <h2>Unordered Lists</h2>
+    <ul>
+        <li>Orange</li>
+        <li>Green</li>
+        <li>Blue</li>
+    </ul>
+
+    <h2>Ordered Lists</h2>
+    <ol>
+        <li>Head north on N Halsted St</li>
+        <li>Turn right on W Diversey Pkwy</li>
+        <li>Turn left on N Orchard St</li>
+    </ol>
+    <h3>Start Attribute</h3>
+    <ol start="30">
+        <li>Head north on N Halsted St</li>
+        <li>Turn right on W Diversey Pkwy</li>
+        <li>Turn left on N Orchard St</li>
+    </ol>
+    <h3>Reversed Attribute</h3>
+    <ol reversed>
+        <li>Head north on N Halsted St</li>
+        <li>Turn right on W Diversey Pkwy</li>
+        <li>Turn left on N Orchard St</li>
+    </ol>
+    <h3>Value Attribute</h3>
+    <ol>
+        <li>Head north on N Halsted St</li>
+        <li value="9">Turn right on W Diversey Pkwy</li>
+        <li>Turn left on N Orchard St</li>
+    </ol>
+
+    <h2>Description Lists</h2>
+    <p>Creating a description list in HTML is accomplished using the description list block-level element,
+        <code>&lt;dl&gt;</code>. Instead of using a
+        <code>&lt;li&gt;</code>
+        element to mark up list items, the description list requires two block-level elements: the
+        description term element,
+        <code>&lt;dt&gt;</code>
+        , and the description element,
+        <code>&lt;dd&gt;</code>.
+    </p>
+    <p>A description list may contain numerous terms and descriptions, one after the other. Additionally, a description
+        list may have multiple terms per description, as well as multiple descriptions per term. A single term may have
+        multiple meanings and warrant multiple descriptions. Conversely, a single description may be suitable for
+        multiple terms.</p>
+    <p>When adding a description list, the <code>&lt;dt&gt;</code> element must come before the <code>&lt;dd&gt;</code>
+        element. The definition term and the description that directly follows it correspond to one another; thus, the
+        order of these elements is important.</p>
+
+    <dl>
+        <dt>study</dt>
+        <dd>The devotion of time and attention to acquiring knowledge on an academic subject, especially by means of
+            books</dd>
+        <dt>design</dt>
+        <dd>A plan or drawing produced to show the look and function or workings of a building, garment, or other object
+            before it is built or made</dd>
+        <dd>Purpose, planning, or intention that exists or is thought to exist behind an action, fact, or material
+            object</dd>
+        <dt>business</dt>
+        <dt>work</dt>
+        <dd>A person's regular occupation, profession, or trade</dd>
+    </dl>
+
+    <h2>Nesting Lists</h2>
+    <ol>
+        <li>Walk the dog</li>
+        <li>Fold laundry</li>
+        <li>
+            Go to the grocery and buy:
+            <ul>
+                <li>Milk</li>
+                <li>Bread</li>
+                <li>Cheese</li>
+            </ul>
+        </li>
+        <li>Mow the lawn</li>
+        <li>Make dinner</li>
+    </ol>
+
+    <h2>List Item Styling</h2>
+    <h3>List Style Type Property</h3>
+    <ul class="square-list">
+        <li>Orange</li>
+        <li>Green</li>
+        <li>Blue</li>
+    </ul>
+
+    <h3>List Style Type Values</h3>
+    <table class="tabular-data">
+        <thead>
+            <tr>
+                <th>List Style Type Value</th>
+                <th>Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-title="List Style Type Value"><code>none</code></td>
+                <td data-title="Content">No list item</td>
+            </tr>
+            <tr>
+                <td data-title="List Style Type Value"><code>disc</code></td>
+                <td data-title="Content">A filled circle</td>
+            </tr>
+            <tr>
+                <td data-title="List Style Type Value"><code>circle</code></td>
+                <td data-title="Content">A hollow circle</td>
+            </tr>
+            <tr>
+                <td data-title="List Style Type Value"><code>square</code></td>
+                <td data-title="Content">A filled square</td>
+            </tr>
+            <tr>
+                <td data-title="List Style Type Value"><code>decimal</code></td>
+                <td data-title="Content">Decimal numbers</td>
+            </tr>
+            <tr>
+                <td data-title="List Style Type Value"><code>decimal-leading-zero</code></td>
+                <td data-title="Content">Decimal numbers padded by initial zeros</td>
+            </tr>
+            <tr>
+                <td data-title="List Style Type Value"><code>lower-roman</code></td>
+                <td data-title="Content">Lowercase roman numerals</td>
+            </tr>
+            <tr>
+                <td data-title="List Style Type Value"><code>upper-roman</code></td>
+                <td data-title="Content">Uppercase roman numerals</td>
+            </tr>
+            <tr>
+                <td data-title="List Style Type Value"><code>lower-greek</code></td>
+                <td data-title="Content">Lowercase classical Greek</td>
+            </tr>
+            <tr>
+                <td data-title="List Style Type Value"><code>lower-alpha / lower-latin</code></td>
+                <td data-title="Content">Lowercase ASCII letters</td>
+            </tr>
+            <tr>
+                <td data-title="List Style Type Value"><code>upper-alpha / upper-latin</code></td>
+                <td data-title="Content">Uppercase ASCII letters</td>
+            </tr>
+            <tr>
+                <td data-title="List Style Type Value"><code>armenian</code></td>
+                <td data-title="Content">Traditional Armenian numbering</td>
+            </tr>
+            <tr>
+                <td data-title="List Style Type Value"><code>georgian</code></td>
+                <td data-title="Content">Traditional Georgian numbering</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Using an Image as a List Marker</h3>
+    <ul class="custom-marker">
+        <li>Orange</li>
+        <li>Green</li>
+        <li>Blue</li>
+    </ul>
+
+    <h3>List Style Position Property</h3>
+    <ul class="list-style-inside">
+        <li>Cupcakes &ndash; One of the best desserts known to ever exist, especially when topped with cream cheese
+            frosting</li>
+        <li>Sprinkles &ndash; One of the most popular toppings for cupcakes, adding that extra bit of decoration and
+            sugar</li>
+    </ul>
+
+    <h3>Shorthand List Style Property</h3>
+    <p>The list style properties discussed thus far, list-style-type and list-style-position, can be combined into one
+        shorthand list-style property value. When using the list-style property, we can use one or all list style
+        property values at a time. The order of these shorthand values should be list-style-type followed by
+        list-style-position.</p>
+
+    <h2>Horizontally Displaying List</h2>
+
+    <h3>Displaying List</h3>
+    <p>More often than not, we’ll use the inline-block property value rather than the inline property value. The
+        inline-block property value allows us to easily add vertical margins and other spacing to the <li> elements,
+            whereas the inline property value does not.</p>
+    <p>When changing the display property value to inline or inline-block, the list item marker, be it a bullet, number,
+        or other style, is removed.</p>
+    <ul class="inline-block-list">
+        <li>Orange</li>
+        <li>Green</li>
+        <li>Blue</li>
+    </ul>
+
+    <h3>Floating List</h3>
+    <p>Changing the display property value to inline or inline-block is quick; however, it removes the list item marker.
+        If the list item marker is needed, floating each <code>&lt;li&gt;</code> element is a better option than
+        changing the display property.</p>
+    <ul class="floating-list">
+        <li>Orange</li>
+        <li>Green</li>
+        <li>Blue</li>
+    </ul>
+    <p>As when floating any element, this breaks the flow of the page. We must remember to clear our floats — most
+        commonly with the clearfix technique — and return the page back to its normal flow.</p>
+
+    <h3>Navigational List Example</h3>
+    <nav class="navigation" id="navigation">
+        <ul>
+            <li><a href="#navigation">Profile</a></li><!--
+          --><li><a href="#navigation">Settings</a></li><!--
+          --><li><a href="#navigation">Notifications</a></li><!--
+          --><li><a href="#navigation">Logout</a></li>
+        </ul>
+    </nav>
+</body>
+
+</html>
