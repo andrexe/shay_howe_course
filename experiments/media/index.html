@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Adding Media</title>
+</head>
+
+<body>
+
+    <h1>Adding Media</h1>
+
+    <h2>Adding Images</h2>
+    <img class="max-width" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/dog.jpg"
+        alt="A black, brown, and white dog wearing a kerchief">
+
+    <h3>Sizing Images</h3>
+    <img class="sizing" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/dog.jpg"
+        alt="A black, brown, and white dog wearing a kerchief">
+
+    <h3>Positioning Images</h3>
+    <p>We can use a number of different approaches to position images on a web page. By default images are positioned as
+        inline-level elements; however, their positions may be changed using CSS, specifically the float, display, and
+        box model properties, including padding, border, and margin.</p>
+
+    <h4>Inline Positioning Images</h4>
+    <p>The <code>&lt;img&gt;</code> element is by default an inline-level element. Adding an image without any styles to
+        a page will position that image within the same line as the content that surrounds it. Additionally, the height
+        of the line in which an image appears will be changed to match the height of the image, which can create large
+        vertical gaps within that line.</p>
+    <p>Gatsby is a black, brown, and white hound mix puppy who loves howling at fire trucks and collecting belly rubs.
+        <img class="sizing" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/dog.jpg"
+            alt="A black, brown, and white dog wearing a kerchief"> Although he spends most of his time sleeping he is
+        also quick to chase any birds who enter his vision.
+    </p>
+
+    <h4>Block Positioning Images</h4>
+    <p>Adding the display property to an image and setting its value to block forces the image to be a block-level
+        element. This makes the image appear on its own line, allowing the surrounding content to be positioned above
+        and below the image.</p>
+    <p>Gatsby is a black, brown, and white hound mix puppy who loves howling at fire trucks and collecting belly rubs.
+        <img class="sizing block" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/dog.jpg"
+            alt="A black, brown, and white dog wearing a kerchief"> Although he spends most of his time sleeping he is
+        also quick to chase any birds who enter his vision.
+    </p>
+
+    <h4>Positioning Images Flush Left or Right</h4>
+    <p>Sometimes displaying an image as inline or block, or perhaps even inline-block, isn’t ideal. We may want the
+        image to appear on the left or right side of its containing element, while all of the other content wraps around
+        the image as necessary. To do this, we use the float property with a value of either left or right.</p>
+    <p>Gatsby is a black, <img class="sizing float-right"
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/dog.jpg"
+            alt="A black, brown, and white dog wearing a kerchief"> brown, and white hound mix puppy who loves howling
+        at fire trucks and collecting belly rubs.
+        Although he spends most of his time sleeping he is
+        also quick to chase any birds who enter his vision.
+    </p>
+
+    <h4>When to Use an Image Element vs a Background Image</h4>
+    <p>The <code>&lt;img&gt;</code> element within HTML is the preferred option when the image being used holds semantic value and its
+        content is relevant to the content of the page.</p>
+        <p>The background or background-image property within CSS is the preferred option when the image being used is part of the design or user interface of the page. As such, it’s not directly relevant to the content of the page.</p>
+
+</body>
+
+</html>
