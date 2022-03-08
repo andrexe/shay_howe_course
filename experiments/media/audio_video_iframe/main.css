@@ -1,0 +1,9 @@
+video {
+  max-width: 100%;
+}
+
+iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Adding Audio</title>
+</head>
+<body>
+    <h1>Adding Audio</h1>
+    <h2>Audio Attributes</h2>
+    <audio loop controls preload="metadata">
+        <source src="./assets/flux_pavillion_cannot_hold_you_anymore.wav" type="audio/wav">
+        <source src="./assets/flux_pavillion_cannot_hold_you_anymore.ogg" type="audio/ogg">
+        <source src="./assets/flux_pavillion_cannot_hold_you_anymore.mp3" type="audio/mpeg">
+        Please <a href="./assets/flux_pavillion_cannot_hold_you_anymore.mp3">download</a> the audio file.
+    </audio>
+    
+    <h2>Adding Video</h2>
+    <p>One additional attribute available for the video element is the poster attribute. The poster attribute allows us to specify an image, in the form of a URL, to be shown before a video is played. The example below uses a screen capture from the video as the poster for the Earth video.</p>
+    <video controls loop poster="./assets/BRE_thumbnail.jpg">
+        <source src="./assets/BRE.mp4" type="video/mp4">
+        <source src="./assets/BRE.webm" type="video/webm">
+    </video>
+
+    <h2>Adding Inline Frames</h2>
+    <iframe src="https://www.google.com/maps/embed"></iframe>
+</body>
+</html>
