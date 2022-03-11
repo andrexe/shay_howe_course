@@ -30,12 +30,10 @@ When we float an element, we take it out of the normal flow of the HTML document
   clear: both;
   *zoom: 1;
 }
-
 .group:before, .group:after {
   content: "";
   display: table;
 }
-
 .group:after {
   clear: both;
 }
@@ -50,7 +48,6 @@ It is more code than the clear: both; declaration alone, but it can prove to be 
 footer {
   margin-bottom: 0;
 }
-
 footer code {
   border: 2px solid black;
 }
@@ -59,7 +56,6 @@ section {
   float: left;
   width: 63%;
 }
-
 section code {
   background: red;
 }
@@ -68,8 +64,6 @@ aside {
   float: right;
   width: 30%;
 }
-
 aside code {
   background: blue;
-}
-/*# sourceMappingURL=2col_contained.css.map */
+}/*# sourceMappingURL=2col_contained.css.map */

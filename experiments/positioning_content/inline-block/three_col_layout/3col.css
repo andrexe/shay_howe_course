@@ -19,11 +19,9 @@ section {
   display: inline-block;
   width: 30%;
 }
-
 section:first-of-type code {
   background: red;
 }
-
 section:last-of-type code {
   background: blue;
 }
@@ -31,5 +29,4 @@ section:last-of-type code {
 footer {
   clear: both;
   margin-bottom: 0;
-}
-/*# sourceMappingURL=3col.css.map */
+}/*# sourceMappingURL=3col.css.map */

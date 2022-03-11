@@ -23,7 +23,6 @@ footer {
   margin-bottom: 0;
   clear: both;
 }
-
 footer code {
   border: 2px solid black;
 }
@@ -32,7 +31,6 @@ section {
   float: left;
   width: 63%;
 }
-
 section code {
   background: red;
 }
@@ -41,8 +39,6 @@ aside {
   float: right;
   width: 30%;
 }
-
 aside code {
   background: blue;
-}
-/*# sourceMappingURL=2col.css.map */
+}/*# sourceMappingURL=2col.css.map */
