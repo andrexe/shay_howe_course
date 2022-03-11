@@ -206,10 +206,20 @@ p a {
   text-transform: uppercase;
 }
 
+.btn-default {
+  border: 0;
+  background: #648800;
+  padding: 11px 30px;
+  font-size: 14px;
+  &:hover {
+    background: #77a198;
+  }
+}
+
 .btn-alt {
   border: 1px solid #dfe2e5;
   padding: 10px 30px;
-  :hover {
+  &:hover {
     background: #fff;
     color: #648880;
   }
@@ -248,7 +258,7 @@ p a {
   h2 {
     font-size: 36px;
   }
-  
+
   p {
     font-size: 24px;
     font-weight: 100;
@@ -257,7 +267,7 @@ p a {
 
 .teaser {
   a:hover h3 {
-  color: #a9b2b9;
+    color: #a9b2b9;
   }
 
   img {
@@ -326,7 +336,7 @@ p a {
   margin-top: 88px;
   padding-bottom: 22px;
   text-align: center;
-  
+
   img {
     border-radius: 50%;
     height: 130px;
@@ -354,5 +364,56 @@ p a {
 }
 
 .venue-map {
-  height: 264px;;
+  height: 264px;
+}
+
+/*
+  ========================================
+  Register
+  ========================================
+*/
+
+.why-attend {
+  list-style: square;
+  margin: 0 0 22px 30px;
+}
+
+form {
+  margin-bottom: 22px;
+}
+
+input,
+select,
+textarea {
+  font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.register-group {
+  color: #648800;
+  cursor: pointer;
+  font-weight: 400;
+
+  input,
+  select,
+  textarea {
+    border: 1px solid #c6c9cc;
+    border-radius: 5px;
+    color: #888;
+    display: block;
+    margin: 5px 0 27px 0;
+    padding: 5px 8px;
+  }
+
+  input, textarea {
+    width: 100%;
+  }
+
+  select {
+    height: 34px;
+    width: 60px;
+  }
+
+  textarea {
+    height: 78px;
+  }
 }
