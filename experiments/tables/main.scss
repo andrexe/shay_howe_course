@@ -1,0 +1,139 @@
+table {
+    border-collapse: collapse;
+}
+
+.separate-borders {
+    border-collapse: separate;
+    border-spacing: 4px;
+}
+
+th,
+td {
+    padding: 10px 15px;
+}
+
+table {
+    border: 1px solid hsla(0, 0%, 0%, 70%);
+}
+
+td {
+    border: 1px solid hsla(0, 0%, 0%, 30%);
+}
+th {
+    border: 1px solid hsla(0, 0%, 0%, 50%);
+}
+
+.row-borders {
+    border: none;
+    border-collapse: collapse;
+    th,
+    td {
+        border-bottom: 1px solid black;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        padding: 10px 15px;
+    }
+    tfoot tr:last-child td {
+        border-bottom: 0;
+    }
+}
+
+.striped {
+    border: none;
+    border-collapse: separate;
+    border-spacing: 0;
+    th,
+    td {
+        padding: 10px 15px;
+        border: none;
+    }
+    thead {
+        background: hsl(204, 75%, 22%);
+        color: white;
+        border: none;
+    }
+    tbody tr:nth-child(even) {
+        background: hsla(0, 0%, 0%, 10%);
+    }
+    td {
+        border-bottom: 1px solid hsla(0, 0%, 0%, 30%);
+        border-right: 1px solid hsla(0, 0%, 0%, 30%);
+        border-left: none;
+        border-top: none;
+        &:first-child {
+            border-left: 1px solid hsla(0, 0%, 0%, 30%);
+        }
+    }
+}
+
+.aligned-text {
+    border: none;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #4a4a4d;
+    font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    th,
+    td {
+        padding: 10px 15px;
+        vertical-align: middle;
+        border: none;
+    }
+    thead {
+        background: #395870;
+        background: linear-gradient(#49708f, #293f50);
+        color: #fff;
+        font-size: 11px;
+        text-transform: uppercase;
+    }
+    th:first-child {
+        border-top-left-radius: 5px;
+        text-align: left;
+    }
+    th:last-child {
+        border-top-right-radius: 5px;
+    }
+    tbody tr:nth-child(even) {
+        background: #f0f0f2;
+    }
+    td {
+        border-bottom: 1px solid #cecfd5;
+        border-right: 1px solid #cecfd5;
+    }
+    td:first-child {
+        border-left: 1px solid #cecfd5;
+    }
+    .book-title {
+        color: #395870;
+        display: block;
+    }
+    .text-offset {
+        color: #7c7c80;
+        font-size: 12px;
+    }
+    .item-stock,
+    .item-qty {
+        text-align: center;
+    }
+    .item-price {
+        text-align: right;
+    }
+    .item-multiple {
+        display: block;
+    }
+    tfoot {
+        text-align: right;
+    }
+    tfoot tr:last-child {
+        background: #f0f0f2;
+        color: #395870;
+        font-weight: bold;
+    }
+    tfoot tr:last-child td:first-child {
+        border-bottom-left-radius: 5px;
+    }
+    tfoot tr:last-child td:last-child {
+        border-bottom-right-radius: 5px;
+    }
+}

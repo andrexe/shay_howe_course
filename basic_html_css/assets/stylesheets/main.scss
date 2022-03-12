@@ -404,7 +404,8 @@ textarea {
     padding: 5px 8px;
   }
 
-  input, textarea {
+  input,
+  textarea {
     width: 100%;
   }
 
@@ -416,4 +417,80 @@ textarea {
   textarea {
     height: 78px;
   }
+}
+
+/*
+  ========================================
+  Schedule
+  ========================================
+*/
+
+table {
+  margin-bottom: 44px;
+  width: 100%;
+
+  a {
+    color: #888;
+  }
+
+  h4 {
+    margin-bottom: 0;
+  }
+}
+table:last-child {
+  margin-bottom: 0;
+}
+
+th,
+td {
+  padding-bottom: 22px;
+  vertical-align: top;
+}
+
+th {
+  padding-right: 45px;
+  text-align: right;
+  width: 20%;
+}
+
+td {
+  width: 40%;
+}
+
+thead {
+  line-height: 44px;
+}
+
+thead th {
+  color: #648880;
+  font-size: 24px;
+}
+
+tbody {
+  th {
+    color: #a9b2b9;
+    font-size: 14px;
+    font-weight: 400;
+    padding-top: 22px;
+    text-transform: uppercase;
+  }
+
+  td {
+    border-top: 1px solid #dfe2e5;
+    padding-top: 21px;
+    &:first-of-type {
+      padding-right: 15px;
+    }
+    &:last-of-type {
+      padding-left: 15px;
+    }
+    &:only-of-type {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.schedule-offset {
+  color: #a9b2b9;
 }

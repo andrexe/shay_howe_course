@@ -1,0 +1,139 @@
+table {
+  border-collapse: collapse;
+}
+
+.separate-borders {
+  border-collapse: separate;
+  border-spacing: 4px;
+}
+
+th,
+td {
+  padding: 10px 15px;
+}
+
+table {
+  border: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+td {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+th {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.row-borders {
+  border: none;
+  border-collapse: collapse;
+}
+.row-borders th,
+.row-borders td {
+  border-bottom: 1px solid black;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding: 10px 15px;
+}
+.row-borders tfoot tr:last-child td {
+  border-bottom: 0;
+}
+
+.striped {
+  border: none;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.striped th,
+.striped td {
+  padding: 10px 15px;
+  border: none;
+}
+.striped thead {
+  background: #0e4162;
+  color: white;
+  border: none;
+}
+.striped tbody tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.1);
+}
+.striped td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  border-left: none;
+  border-top: none;
+}
+.striped td:first-child {
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.aligned-text {
+  border: none;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #4a4a4d;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.aligned-text th,
+.aligned-text td {
+  padding: 10px 15px;
+  vertical-align: middle;
+  border: none;
+}
+.aligned-text thead {
+  background: #395870;
+  background: linear-gradient(#49708f, #293f50);
+  color: #fff;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.aligned-text th:first-child {
+  border-top-left-radius: 5px;
+  text-align: left;
+}
+.aligned-text th:last-child {
+  border-top-right-radius: 5px;
+}
+.aligned-text tbody tr:nth-child(even) {
+  background: #f0f0f2;
+}
+.aligned-text td {
+  border-bottom: 1px solid #cecfd5;
+  border-right: 1px solid #cecfd5;
+}
+.aligned-text td:first-child {
+  border-left: 1px solid #cecfd5;
+}
+.aligned-text .book-title {
+  color: #395870;
+  display: block;
+}
+.aligned-text .text-offset {
+  color: #7c7c80;
+  font-size: 12px;
+}
+.aligned-text .item-stock,
+.aligned-text .item-qty {
+  text-align: center;
+}
+.aligned-text .item-price {
+  text-align: right;
+}
+.aligned-text .item-multiple {
+  display: block;
+}
+.aligned-text tfoot {
+  text-align: right;
+}
+.aligned-text tfoot tr:last-child {
+  background: #f0f0f2;
+  color: #395870;
+  font-weight: bold;
+}
+.aligned-text tfoot tr:last-child td:first-child {
+  border-bottom-left-radius: 5px;
+}
+.aligned-text tfoot tr:last-child td:last-child {
+  border-bottom-right-radius: 5px;
+}/*# sourceMappingURL=main.css.map */
