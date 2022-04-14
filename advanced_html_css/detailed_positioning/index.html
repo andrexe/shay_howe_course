@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed CSS Positioning</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Notice the @3.x.x in the provided CDN link. This will pull the latest version of Alpine version 3.  -->
+    <script defer="" src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Detailed CSS Positioning</h1>
+
+    <h2>Containing Floats</h2>
+
+    <h3>What is the DOM?</h3>
+
+    <p>The DOM, or Document Object Model, is an API for HTML and XML documents which provides their structural
+        representation. In our case, we are speaking specifically to HTML documents, thus the DOM represents all of the
+        different elements and their relationship to each other.</p>
+    <p>The representation can be considered a tree of sorts, with each element having a different relationship with
+        those around it. Elements nested inside others have a parent and child relationship while elements that share
+        the same parent have a sibling relationship.</p>
+
+    <p>While floats do provide quite a bit of fire power, they do come with a few of their own problems. The most
+        popular problem involves a parent element that contains numerous floated elements. Content on the page will
+        respect the size and placement of the floated children element, but these floated elements no longer impact the
+        outer edges of the parent container. In this event the parent element loses context of exactly what it contains
+        and collapses, thus giving the parent element a height of 0 and ignoring various other properties. A lot of
+        times this may go unnoticed, specifically when the parent element doesn’t have any styles tied to it and the
+        nested elements look to have aligned correctly.</p>
+
+    <p>Should the nested elements not line up correctly, styling errors may appear. Taking a look at the demo below, the
+        .box-set division should have a light gray background, however the background is not seen as all of the elements
+        nested within it are floated. Upon inspecting the .box-set division you will see it has a height of 0.</p>
+
+    <div class="box-set">
+        <figure class="box">Box 1</figure>
+        <figure class="box">Box 2</figure>
+        <figure class="box">Box 3</figure>
+    </div>
+
+    <p>One way to force containing these floats would be to place an empty element just before the parent elements
+        closing tag, of which would need to include the style declaration clear: both;. Clearing the floats this way
+        works and is valid in most cases, but it isn’t exactly semantic. Depending on how many different floats need to
+        be cleared on a page the number of empty elements can begin to stack up quickly, while not providing any real
+        contextual value to the page.</p>
+
+    <p>Fortunately there are a couple of different techniques we can use to contain these floats, the most popular of
+        which include the overflow technique and the clearfix technique.</p>
+
+    <h3>The Overflow Technique</h3>
+
+    <p>One technique for containing floats within a parent element is to use the CSS overflow property. Setting the
+        overflow property value to auto within the parent element will contain the floats, resulting in an actual height
+        for the parent element, thus including a gray background in our example.</p>
+
+    <div class="overflow">
+        <div class="box-set">
+            <figure class="box">Box 1</figure>
+            <figure class="box">Box 2</figure>
+            <figure class="box">Box 3</figure>
+        </div>
+    </div>
+
+    <p>Using the overflow technique does come with a few drawbacks. For example, when adding styles or moving nested
+        elements that span outside of the parent, like when trying to implement box shadows and dropdown menus. In the
+        demonstration below, you can see how the box shadow is being cut off wherever it lies outside the parent
+        element. Additionally, the second box is cropped outside of the parent element.</p>
+
+    <div class="overflow-bad">
+        <div class="box-set">
+            <figure class="box">Box 1</figure>
+            <figure class="box">Box 2</figure>
+            <figure class="box">Box 3</figure>
+        </div>
+    </div>
+
+    <h3>The Clearfix Technique</h3>
+
+    <p>The clearfix technique is based off using the :before and :after pseudo-elements on the parent element. Using
+        these pseudo-elements we can create hidden elements above and below the parent containing the floats. The
+        :before pseudo-element is used to prevent the top margin of child elements from collapsing by creating an
+        anonymous table-cell element using the display: table; declaration. This also helps ensure consistency within
+        Internet Explorer 6 and 7. The :after pseudo-element is used to prevent the bottom margin of child elements from
+        collapsing, as well as to clear the nested floats.</p>
+
+    <div class="clearfix">
+        <div class="box-set">
+            <figure class="box">Box 1</figure>
+            <figure class="box">Box 2</figure>
+            <figure class="box">Box 3</figure>
+        </div>
+    </div>
+
+    <h3>Effectively Containing Floats</h3>
+
+    <p>Which techniques to use boils down to the content at hand and your personal preference. Some people prefer to
+        stick strictly with the clearfix technique as it is consistent across the board. Others feel the clearfix
+        technique is a bit too much code in some cases and prefer a mix of techniques based on the content. What you
+        decide to use is up to you, just make sure it is well documented and easily identifiable either way.</p>
+
+    <p>One common practice is to assign a class to the parent element which includes the floats needing to be
+        contained. Using the clearfix technique for example, Dan Cederholm helped coin the class name group. The group
+        class name can then be applied to any parent element needing to contain floats.</p>
+
+    <code><pre>
+.group:before,.group:after {
+    content: "";
+    display: table;
+    }
+.group:after {
+    clear: both;
+    }
+.group {
+    *zoom: 1;
+    }</pre></code>
+
+    <h4>Single Pseudo-Elements</h4>
+    <p>It is worth noting only one :before and one :after pseudo-element are allowed per element, for the time being.
+        When trying to use the clearfix technique with other :before and :after pseudo-element content you may not
+        achieve the desired outcome.</p>
+    <p>In the examples above, the clearfix styles would not live under the box-set class. Instead, the class of group
+        would need to be added to the parent element containing the floats.</p>
+
+    <h2>Position Property</h2>
+
+    <p>Occasionally you need more control over the position of an element, more than a float can provide, in which case
+        the position property comes into play. The position property accepts five different values, each of which
+        provide different ways to uniquely position an element.</p>
+
+    <h3>Position Static</h3>
+
+    <p>Elements by default have the position value of static, meaning they don’t have, nor will they accept, any
+        specific box offset properties. Furthermore, elements will be positioned as intended, with their default
+        behaviors.</p>
+
+    <p>In the demonstration below, all the boxes are stacked one on top of the other as they are block level elements
+        and are not floated in any specific direction.</p>
+
+    <div class="static">
+        <figure class="boxx box-1">Box 1</figure>
+        <figure class="boxx box-2">Box 2</figure>
+        <figure class="boxx box-3">Box 3</figure>
+        <figure class="boxx box-4">Box 4</figure>
+    </div>
+
+    <h3>Position Relative</h3>
+
+    <p>The relative value for the position property is very similar to that of the static value. The primary difference
+        is that the relative value accepts the box offset properties top, right, bottom, and left. These box offset
+        properties allow the element to be precisely positioned, shifting the element from its default position in any
+        direction.</p>
+
+    <h4>How Box Offset Properties Work</h4>
+
+    <p>The box offset properties, top, right, bottom, and left, specify how elements may be positioned, and in which
+        direction. These offset properties only work on elements with a relative, absolute, or fixed positioning value.
+    </p>
+    <p>For relatively positioned elements, these properties specify how an element should be moved from its default
+        position. For example, using a top value of 20px on a relatively positioned element will push the element 20
+        pixels down from where it was originally placed. Switching the top value to -20px will instead pull the element
+        20 pixels up from where it was originally placed.</p>
+    <p>For elements using absolute or fixed positioning these properties specify the distance between the element and
+        the edges of its parent element. For example, using a top value of 20px on an absolutely positioned element will
+        push the element 20 pixels down from the top of its relatively positioned parent. Switching the top value to
+        -20px will then pull the element 20 pixels up from the top of its relatively positioned parent.</p>
+    <p>While the relative position does accept box offset properties the element still remains in the normal, or static,
+        flow of the page. In this case other elements will not impede on where the relatively positioned element was
+        originally placed. Additionally, the relatively positioned element may overlap, or underlap, other elements
+        without moving them from their default position.</p>
+    <p>In the demonstration below you will notice that the elements are still stacked on top of one another, however
+        they are shifted from their default positions according to their individual box offset property values. These
+        values cause the boxes to overlap one another, yet do not push each other in different directions. When an
+        element is positioned relatively the surrounding elements will observe the relatively positioned elements
+        default position.</p>
+
+    <div class="relative">
+        <figure class="boxx box-1">Box 1</figure>
+        <figure class="boxx box-2">Box 2</figure>
+        <figure class="boxx box-3">Box 3</figure>
+        <figure class="boxx box-4">Box 4</figure>
+    </div>
+
+    <p>In the event that the top and bottom box offset properties are both declared on a relatively positioned element,
+        the top properties will take priority. Additionally, if both the left and right box offset properties are
+        declared on a relatively positioned element, priority is given in the direction in which the language of the
+        page is written. For example, in English pages the left offset property is given priority, and for Arabic pages
+        the right offset property is given priority.</p>
+
+    <h3>Position Absolute</h3>
+
+    <p>Absolutely positioned elements accept box offset properties, however they are removed from the normal flow of the
+        document. Upon removing the element from the normal flow, elements are positioned directly in relation to their
+        containing parent whom is relatively or absolutely positioned. Should a relatively or absolutely positioned
+        parent not be present, the absolutely positioned element will be positioned in relation to the <code>body</code>
+        of the page.</p>
+    <p>Using absolutely positioned elements and specifying both vertical and horizontal offset properties will move the
+        element with those property values in relation to its relatively positioned parent. For example, an element with
+        a <code>top</code> value of <code>50px</code> and a <code>right</code> value of <code>100px</code> will position
+        the element 50 pixels down from the top of its relatively positioned parent and 100 pixels in from the right of
+        its relatively positioned parent.</p>
+    <p>Furthermore, using an absolutely positioned element and not specifying any box offset property will position the
+        element in the top left of its closest relatively positioned parent. Setting one box offset property, such as
+        <code>top</code>, will absolutely position the element vertically but will leave the horizontal positioning to
+        the default value of flush left.
+    </p>
+    <p>In the demonstration below you can see how each box is absolutely positioned in relation to the parent division,
+        of which is relatively positioned. Each individual box is moved in from a specific side with a positive value,
+        or pulled out from a specific side with a negative value.</p>
+
+
+    <div class="absolute">
+        <figure class="boxx box-1">Box 1</figure>
+        <figure class="boxx box-2">Box 2</figure>
+        <figure class="boxx box-3">Box 3</figure>
+        <figure class="boxx box-4">Box 4</figure>
+    </div>
+
+    <p>When an element has a fixed <code>height</code> and <code>width</code> and is absolutely positioned, the
+        <code>top</code> property takes priority should both the <code>top</code> and <code>bottom</code> offset
+        properties be declared. As with the relatively positioned elements, should an element with a fixed
+        <code>width</code> have both the <code>left</code> and <code>right</code> box offset properties, priority is
+        given to the direction of which the language of the page is written.
+    </p>
+
+    <p>If an element doesn’t have a specific <code>height</code> or <code>width</code> and is absolutely positioned,
+        using a combination of the <code>top</code> and <code>bottom</code> box offset properties displays an element
+        with a height spanning the entire specified size. Same goes for using both the <code>left</code> and
+        <code>right</code> box offset properties, resulting in an element with a full <code>width</code> based on both
+        of the <code>left</code> and <code>right</code> box offset properties. Using all four box offset properties will
+        display an element with a full specified height and width.
+    </p>
+
+    <h3>Position Fixed</h3>
+
+    <p>Using the positioning value of <code>fixed</code> works just like that of <code>absolute</code>, however the
+        positioning is relative to the browser viewport, and it does not scroll with the page. That said, elements will
+        always be present no matter where a user stands on a page. The only caveat with <code>fixed</code> positioning
+        is that it doesn’t work with Internet Explorer 6. Should you want to force <code>fixed</code> positioning within
+        Internet Explorer 6 there are suitable hacks.</p>
+
+    <p>Using multiple box offset properties with <code>fixed</code> positioning will produce the same behaviors as an
+        absolutely positioned element.</p>
+
+    <p>Using multiple box offset properties with <code>fixed</code> positioning will produce the same behaviors as an
+        absolutely positioned element.</p>
+
+    <div x-data="{ fixedClass: false }">
+        <div x-bind:class="{ fixed: fixedClass }">
+            <figure class="boxx box-1">Box 1</figure>
+            <figure class="boxx box-2">Box 2</figure>
+            <figure class="boxx box-3">Box 3</figure>
+            <figure class="boxx box-4">Box 4</figure>
+        </div>
+        <button x-on:click="fixedClass = !fixedClass">Toggle fixed class</button>
+    </div>
+
+    <h4>Fixed Header or Footer</h4>
+
+    <p>One of the most common uses of <code>fixed</code> positioning is to build a fixed header, or footer, anchored to
+        one side of a page. As a user scrolls the element stays prevalent, always within the viewport for users to
+        interact with.</p>
+
+    <p>The code and demonstration below outline how this may be achieved. Notice how both <code>left</code> and
+        <code>right</code> box offset properties are declared. This allows the <code>footer</code> to span the entire
+        width of the bottom of the page, and it does so without disrupting the box model, allowing margins, borders, and
+        padding to be applied freely.
+    </p>
+
+
+    <div x-data="{ footerClass: false }">
+        <footer x-bind:class="{ footer: footerClass }">
+            Fixed Footer
+        </footer>
+
+        <button x-on:click="footerClass = !footerClass">Toggle footer class</button>
+    </div>
+
+    <h2>Z-Index Property</h2>
+
+    <p>By nature web pages are often considered to be two dimensional, displaying elements upon a <code>x</code> and
+        <code>y</code> axis. However when you begin to position elements they are occasionally placed on top of one
+        another. To change the order of <a
+            href="http://www.impressivewebs.com/a-detailed-look-at-the-z-index-css-property/" rel="nofollow">how these
+            elements are stacked</a>, also known as the z-axis, the <code>z-index</code> property is to be used.
+    </p>
+    <p>Generally, elements are positioned upon the z-axis as they appear within the DOM. Elements coming at the top of
+        the DOM are positioned behind elements coming after them. Changing this stacking using the <code>z-index</code>
+        property is pretty straight forward. The element with the highest <code>z-index</code> value will appear on the
+        top regardless of its placement in the DOM.</p>
+
+    <p>In order to apply the <code>z-index</code> property to an element, you must first apply a <code>position</code>
+        value of <code>relative</code>, <code>absolute</code>, or <code>fixed</code>. The same as if you were to apply
+        any box offset properties.</p>
+
+    <p>In the example below, without the <code>z-index</code> property each box will be positioned precisely, starting
+        with box two sitting on top of box one, then box three sitting on top of box two, and so forth. Reordering the
+        stacking with the <code>z-index</code> property now positions box two on top of every other box, followed by box
+        three underneath it, and box four underneath box three.</p>
+
+    <div class="z-index">
+        <figure class="boxx box-1">Box 1</figure>
+        <figure class="boxx box-2">Box 2</figure>
+        <figure class="boxx box-3">Box 3</figure>
+        <figure class="boxx box-4">Box 4</figure>
+    </div>
+
+
+</body>
+
+</html>

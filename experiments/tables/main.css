@@ -13,15 +13,15 @@ td {
 }
 
 table {
-  border: 1px solid rgba(0, 0, 0, 0.7);
+  border: 1px solid hsla(0deg, 0%, 0%, 0.7);
 }
 
 td {
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid hsla(0deg, 0%, 0%, 0.3);
 }
 
 th {
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid hsla(0deg, 0%, 0%, 0.5);
 }
 
 .row-borders {
@@ -51,21 +51,21 @@ th {
   border: none;
 }
 .striped thead {
-  background: #0e4162;
+  background: hsl(204deg, 75%, 22%);
   color: white;
   border: none;
 }
 .striped tbody tr:nth-child(even) {
-  background: rgba(0, 0, 0, 0.1);
+  background: hsla(0deg, 0%, 0%, 0.1);
 }
 .striped td {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid hsla(0deg, 0%, 0%, 0.3);
+  border-right: 1px solid hsla(0deg, 0%, 0%, 0.3);
   border-left: none;
   border-top: none;
 }
 .striped td:first-child {
-  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  border-left: 1px solid hsla(0deg, 0%, 0%, 0.3);
 }
 
 .aligned-text {
