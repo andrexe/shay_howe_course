@@ -1,0 +1,12 @@
+.tabular-data {
+  border: 1px solid #888;
+  border-collapse: collapse;
+}
+.tabular-data td, .tabular-data th {
+  padding: 1em 0.5em;
+  border: 1px solid #888;
+}
+.tabular-data tr {
+  margin: 0;
+  padding: 0;
+}/*# sourceMappingURL=style.css.map */

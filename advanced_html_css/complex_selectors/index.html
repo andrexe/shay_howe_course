@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Complex Selectors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>3. Complex Selectors</h1>
+
+    <h2>Common Selectors</h2>
+    <p>The type selector identifies an element based on its type, specifically how that element is declared within HTML.
+        The class selector identifies an element based on its class attribute value, which may be reused on multiple
+        elements as necessary to help share popular styles. Lastly, the ID selector identifies an element based on its
+        ID attribute value, which is unique and should only be used once per page.</p>
+
+    <h3>Common Selectors Overview</h3>
+    <table class="tabular-data">
+        <thead>
+            <tr>
+                <th>Example</th>
+                <th>Classification</th>
+                <th>Explanation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-title="Example"><code>h1</code></td>
+                <td data-title="Classification">Type Selector</td>
+                <td data-title="Explanation">Selects an element by its type</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>.tagline</code></td>
+                <td data-title="Classification">Class Selector</td>
+                <td data-title="Explanation">Selects an element by the class attribute value, which may be reused
+                    multiple times per page</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>#intro</code></td>
+                <td data-title="Classification">ID Selector</td>
+                <td data-title="Explanation">Selects an element by the ID attribute value, which is unique and to only
+                    be used once per page</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Child Selectors</h2>
+    <p>Child selectors provide a way to select elements that fall within one another, thus making them children of their
+        parent element. These selections can be made two different ways, using either descendant or direct child
+        selectors.</p>
+
+    <h3>Child Selectors Overview</h3>
+
+    <table class="tabular-data">
+        <thead>
+            <tr>
+                <th width="20%">Example</th>
+                <th>Classification</th>
+                <th>Explanation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-title="Example"><code>article h2</code></td>
+                <td data-title="Classification">Descendant Selector</td>
+                <td data-title="Explanation">Selects an element that resides anywhere within an identified ancestor
+                    element</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>article &gt; p</code></td>
+                <td data-title="Classification">Direct Child Selector</td>
+                <td data-title="Explanation">Selects an element that resides immediately inside an identified parent
+                    element</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Sibling Selectors</h2>
+    <p>Knowing how to select children of an element is largely beneficial, and quite commonly seen. However sibling
+        elements, those elements that share a common parent, may also need to be selected. These sibling selections can
+        be made by way of the general sibling and adjacent sibling selectors.</p>
+
+    <h3>Sibling Selectors Overview</h3>
+
+    <table class="tabular-data">
+        <thead>
+            <tr>
+                <th>Example</th>
+                <th>Classification</th>
+                <th>Explanation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-title="Example"><code>h2 ~ p</code></td>
+                <td data-title="Classification">General Sibling Selector</td>
+                <td data-title="Explanation">Selects an element that follows anywhere after the prior element, in which
+                    both elements share the same parent</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>h2 + p</code></td>
+                <td data-title="Classification">Adjacent Sibling Selector</td>
+                <td data-title="Explanation">Selects an element that follows directly after the prior element, in which
+                    both elements share the same parent</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Attribute Selectors</h2>
+    <p>Some of the common selectors looked at early may also be defined as attribute selectors, in which an element is
+        selected based upon its class or ID value. These class and ID attribute selectors are widely used and extremely
+        powerful but only the beginning. Other attribute selectors have emerged over the years, specifically taking a
+        large leap forward with CSS3. Now elements can be selected based on whether an attribute is present and what its
+        value may contain.</p>
+
+    <h3>Attribute Selectors Overview</h3>
+    <table class="tabular-data">
+        <thead>
+            <tr>
+                <th>Example</th>
+                <th>Classification</th>
+                <th>Explanation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-title="Example"><code>a[target]</code></td>
+                <td data-title="Classification">Attribute Present Selector</td>
+                <td data-title="Explanation">Selects an element if the given attribute is present</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>a[href="http://google.com/"]</code></td>
+                <td data-title="Classification">Attribute Equals Selector</td>
+                <td data-title="Explanation">Selects an element if the given attribute value exactly matches the value
+                    stated</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>a[href*="login"]</code></td>
+                <td data-title="Classification">Attribute Contains Selector</td>
+                <td data-title="Explanation">Selects an element if the given attribute value contains at least once
+                    instance of the value stated</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>a[href^="https://"]</code></td>
+                <td data-title="Classification">Attribute Begins With Selector</td>
+                <td data-title="Explanation">Selects an element if the given attribute value begins with the value
+                    stated</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>a[href$=".pdf"]</code></td>
+                <td data-title="Classification">Attribute Ends With Selector</td>
+                <td data-title="Explanation">Selects an element if the given attribute value ends with the value stated
+                </td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>a[rel~="tag"]</code></td>
+                <td data-title="Classification">Attribute Spaced Selector</td>
+                <td data-title="Explanation">Selects an element if the given attribute value is whitespace-separated
+                    with one word being exactly as stated</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>a[lang|="en"]</code></td>
+                <td data-title="Classification">Attribute Hyphenated Selector</td>
+                <td data-title="Explanation">Selects an element if the given attribute value is hyphen-separated and
+                    begins with the word stated</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Pseudo-classes</h2>
+    <p>Pseudo-classes are similar to regular classes in HTML however they are not directly stated within the markup,
+        instead they are dynamically populated as a result of users’ actions or the document structure. The most common
+        pseudo-class, and one you’ve likely seen before, is :hover. Notice how this pseudo-class begins with the colon
+        character, :, as will all other pseudo-classes.</p>
+
+    <h3>Pseudo-classes Overview</h3>
+    <table class="tabular-data">
+        <thead>
+            <tr>
+                <th>Example</th>
+                <th>Classification</th>
+                <th>Explanation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-title="Example"><code>a:link</code></td>
+                <td data-title="Classification">Link Pseudo-class</td>
+                <td data-title="Explanation">Selects a link that has not been visited by a user</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>a:visited</code></td>
+                <td data-title="Classification">Link Pseudo-class</td>
+                <td data-title="Explanation">Selects a link that has been visited by a user</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>a:hover</code></td>
+                <td data-title="Classification">Action Pseudo-class</td>
+                <td data-title="Explanation">Selects an element when a user has hovered their cursor over it</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>a:active</code></td>
+                <td data-title="Classification">Action Pseudo-class</td>
+                <td data-title="Explanation">Selects an element when a user has engaged it</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>a:focus</code></td>
+                <td data-title="Classification">Action Pseudo-class</td>
+                <td data-title="Explanation">Selects an element when a user has made it their focus point</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>input:enabled</code></td>
+                <td data-title="Classification">State Pseudo-class</td>
+                <td data-title="Explanation">Selects an element in the default enabled state</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>input:disabled</code></td>
+                <td data-title="Classification">State Pseudo-class</td>
+                <td data-title="Explanation">Selects an element in the disabled state, by way of the disabled attribute
+                </td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>input:checked</code></td>
+                <td data-title="Classification">State Pseudo-class</td>
+                <td data-title="Explanation">Selects a checkbox or radio button that has been checked</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>input:indeterminate</code></td>
+                <td data-title="Classification">State Pseudo-class</td>
+                <td data-title="Explanation">Selects a checkbox or radio button that neither been checked or unchecked,
+                    leaving it in an indeterminate state</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>li:first-child</code></td>
+                <td data-title="Classification">Structural Pseudo-class</td>
+                <td data-title="Explanation">Selects an element that is the first within a parent</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>li:last-child</code></td>
+                <td data-title="Classification">Structural Pseudo-class</td>
+                <td data-title="Explanation">Selects an element that is the last within a parent</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>div:only-child</code></td>
+                <td data-title="Classification">Structural Pseudo-class</td>
+                <td data-title="Explanation">Selects an element that is the only element within a parent</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>p:first-of-type</code></td>
+                <td data-title="Classification">Structural Pseudo-class</td>
+                <td data-title="Explanation">Selects an element that is the first of its type within a parent</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>p:last-of-type</code></td>
+                <td data-title="Classification">Structural Pseudo-class</td>
+                <td data-title="Explanation">Selects an element that is the last of its type within a parent</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>img:only-of-type</code></td>
+                <td data-title="Classification">Structural Pseudo-class</td>
+                <td data-title="Explanation">Selects an element that is the only of its type within a parent</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>li:nth-child(2n+3)</code></td>
+                <td data-title="Classification">Structural Pseudo-class</td>
+                <td data-title="Explanation">Selects an element that matches the given number or expression, counting
+                    all elements from the beginning of the document tree</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>li:nth-last-child(3n+2)</code></td>
+                <td data-title="Classification">Structural Pseudo-class</td>
+                <td data-title="Explanation">Selects an element that matches the given number or expression, counting
+                    all elements from the end of the document tree</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>p:nth-of-type(3n)</code></td>
+                <td data-title="Classification">Structural Pseudo-class</td>
+                <td data-title="Explanation">Selects an element that matches the given number or expression, counting
+                    only elements of its type from the beginning of the document tree</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>p:nth-last-of-type(2n+1)</code></td>
+                <td data-title="Classification">Structural Pseudo-class</td>
+                <td data-title="Explanation">Selects an element that matches the given number or expression, counting
+                    only elements of its type from the end of the document tree</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>section:target</code></td>
+                <td data-title="Classification">Target Pseudo-class</td>
+                <td data-title="Explanation">Selects an element whose ID attribute value matches that of the URI
+                    fragment identifier</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>div:empty</code></td>
+                <td data-title="Classification">Empty Pseudo-class</td>
+                <td data-title="Explanation">Selects an element that does not contain any children or text nodes</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>div:not(.awesome)</code></td>
+                <td data-title="Classification">Negation Pseudo-class</td>
+                <td data-title="Explanation">Selects an element not represented by the stated argument</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Pseudo-elements</h2>
+    <p>Pseudo-elements are dynamic elements that don’t exist in the document tree, and when used within selectors these
+        pseudo-elements allow unique parts of the page to be stylized. One important point to note, only one
+        pseudo-element may be used within a selector at a given time.</p>
+
+    <h3>Pseudo-elements Overview</h3>
+    <table class="tabular-data">
+        <thead>
+            <tr>
+                <th>Example</th>
+                <th>Classification</th>
+                <th>Explanation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-title="Example"><code>.alpha:first-letter</code></td>
+                <td data-title="Classification">Textual Pseudo-elements</td>
+                <td data-title="Explanation">Selects the first letter of text within an element</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>.bravo:first-line</code></td>
+                <td data-title="Classification">Textual Pseudo-elements</td>
+                <td data-title="Explanation">Selects the first line of text within an element</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>div:before</code></td>
+                <td data-title="Classification">Generated Content</td>
+                <td data-title="Explanation">Creates a pseudo-element inside the selected element at the beginning</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>a:after</code></td>
+                <td data-title="Classification">Generated Content</td>
+                <td data-title="Explanation">Creates a pseudo-element inside the selected element at the end</td>
+            </tr>
+            <tr>
+                <td data-title="Example"><code>::selection</code></td>
+                <td data-title="Classification">Fragment Pseudo-element</td>
+                <td data-title="Explanation">Selects the part of a document which has been selected, or highlighted, by
+                    a users’ actions</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Selector Speed &amp; Performance</h3>
+    <p>It is important to pay attention the speed and performance of selectors, as using too many intricate selectors can slow down the rendering of a page. Be attentive and when a selector begins to look a bit foreign think about revisiting it, and seeing if a better solution can be found.</p>
+
+</body>
+
+</html>
