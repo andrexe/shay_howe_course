@@ -1,0 +1,115 @@
+.container:before,
+.container:after {
+  content: "";
+  display: table;
+}
+
+.container:after {
+  clear: both;
+}
+
+.container {
+  background: #eaeaed;
+  margin-bottom: 24px;
+  *zoom: 1;
+}
+
+.container-75 {
+  width: 75%;
+}
+
+.container-50 {
+  margin-bottom: 0;
+  width: 50%;
+}
+
+.container,
+section,
+aside {
+  border-radius: 6px;
+}
+
+section,
+aside {
+  background: #2db34a;
+  color: #fff;
+  margin: 1.858736059%;
+  padding: 20px 0;
+  text-align: center;
+}
+
+section {
+  float: left;
+  width: 63.197026%;
+}
+
+aside {
+  float: right;
+  width: 29.3680297%;
+}
+
+pre,
+code {
+  overflow: scroll;
+}
+
+@media all and (max-width: 420px) {
+  .mediaq section,
+.mediaq aside {
+    float: none;
+    width: auto;
+  }
+}
+.mobile-first section,
+.mobile-first aside {
+  margin: 1.858736059%;
+}
+@media all and (min-width: 420px) {
+  .mobile-first .container {
+    max-width: 538px;
+  }
+  .mobile-first section {
+    float: left;
+    width: 63.197026%;
+  }
+  .mobile-first aside {
+    float: right;
+    width: 29.3680297%;
+  }
+}
+
+figure {
+  margin: 0 0 24px 0;
+}
+
+.figure-75 {
+  width: 75%;
+}
+
+.figure-50 {
+  margin-bottom: 0;
+  width: 50%;
+}
+
+img,
+video,
+canvas {
+  max-width: 100%;
+}
+
+.videos figure {
+  height: 0;
+  margin: 0 0 24px 0;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  position: relative;
+  width: 100%;
+}
+.videos iframe {
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}/*# sourceMappingURL=style.css.map */
