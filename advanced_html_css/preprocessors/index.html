@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preprocessors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Preprocessors</h1>
+    <p>In time writing HTML and CSS may feel a bit taxing, requiring a lot of the same tasks to be completed over and
+        over again. Tasks such as closing tags in HTML or repetitively having to looking up hexadecimal color values in
+        CSS.</p>
+    <p>These different tasks, while commonly small, do add up to quite a bit of inefficiency. Fortunately these, and a
+        handful of other inefficiencies, have been recognized and preprocessor solutions have risen to the challenge.
+    </p>
+    <p>A preprocessor is a program that takes one type of data and converts it to another type of data. In the case of
+        HTML and CSS, some of the more popular preprocessor languages include Haml and Sass. Haml is processed into HTML
+        and Sass is processed into CSS.</p>
+    <p>Upon setting out to solve some of the more common problems, Haml and Sass found many additional ways to empower
+        HTML and CSS, not only by removing the inefficiencies but also in creating ways to make building websites easier
+        and more logical. The popularity of preprocessors have also brought along different frameworks to support them,
+        one of the more popular being Compass.</p>
+
+    <h2>HAML</h2>
+    <p>Haml, known as HTML abstraction markup language, is a markup language with the single goal of providing the
+        ability to write beautiful markup. Serving as its own markup language, code written in Haml is later processed
+        to HTML. Haml promotes DRY and well structured markup, providing a pleasing experience for anyone having to
+        write or read it.</p>
+
+    <h2>SCSS &amp; Sass</h2>
+    <p>SCSS and Sass are preprocessing languages which are compiled to CSS, resembling Haml a bit in that they make
+        writing code easier, and provide quite a bit of leverage in doing so. Individually SCSS and Sass come from the
+        same origin however they are technical different syntaxes.</p>
+    <p>Sass, Syntactically Awesome Stylesheets, came first and is a strict indented syntax. SCSS, Sassy CSS, followed
+        shortly after providing the same firing power of Sass but with a more flexible syntax, including the ability to
+        write plain CSS.</p>
+
+    <h3>Basics</h3>
+    <p>Files written in SCSS or Sass need to have the .scss or .sass file extensions respectively. To convert either of
+        these file types to .css a sass command needs to be run.</p>
+    <p>Should changes to a file be ongoing Sass can watch the file and recompile the CSS every time a change takes
+        place.</p>
+    <p>Additionally, instead of compiling or watching individual files, Sass is capable of compiling and watching entire
+        directories of files.</p>
+    <p>On top of being able to convert SCSS and Sass files to CSS you can also convert files from SCSS to Sass and vice
+        versa.</p>
+
+    <h3>Syntax</h3>
+    <p>As previously mentioned the primary difference between SCSS and Sass is their syntax, and their difference in
+        severity. The syntax of SCSS isn’t much different than that of regular CSS. In fact, standard CSS will run
+        inside of SCSS. Sass on the other hand is fairly strict, and any indenting or character errors will prohibit the
+        styles from compiling. Sass omits all curly brackets, {}, and semicolons, ;, relying on indentation and clear
+        line breaks for formatting.</p>
+
+    <h4>SCSS vs Sass</h4>
+    <p>Deciding on whether to use SCSS or Sass boils down to personal preference, and is a decision to be made based on
+        what is best for a specific team and project. There are pros and cons to each syntax, all of which are fair.</p>
+    <p>Sass will not allow straight CSS input as SCSS does, and will not put up with any composition errors. Sass has a
+        bit more of a learning curve.</p>
+
+    <h3>Nesting</h3>
+    <p>Selectors may be nested inside of one another to create compound selectors. The nesting quickly outlines
+        identifiable selectors, however it is important not to go overboard. Do not nest selectors for unapparent
+        reasons or go overboard nesting one selector under the prior one. Using specific selectors without raising
+        specificity is important.</p>
+    <pre><code>
+        .portfolio
+            border: 1px solid #9799a7
+            ul
+                list-style: none
+            li
+                float: left
+    </code></pre>
+
+    <h4>Nesting Properties</h4>
+    <p>On top of nesting selectors it is also possible to nest properties. Some of the most popular uses of this may be
+        seen with font, margin, padding, and border properties. As with the decision of SCSS versus Sass, this is very
+        much a personal decision. Many feel that shorthand values are fine and breaking out values in this longer format
+        is unnecessary. Ultimately your decision is up to personal preference.</p>
+    <pre><code>
+        div
+            font:
+                family: Baskerville, Palatino, serif
+                style: italic
+                weight: normal
+    </code></pre>
+
+    <h4>Nested Media Queries</h4>
+    <p>Individual media queries may also be nested inside of a selector, changing property values based off a media
+        condition.</p>
+    <pre><code>
+        .container
+            width: 960px
+            @media screen and (max-width: 960px)
+                width: 100%        
+    </code></pre>
+
+    <h3>Parent Selector</h3>
+    <p>Sass provides a way to add styles to a previous selector with the use of the parent selector, implemented by
+        using an ampersand, &. Most commonly the parent selector is used in conjunction with a pseudo class, such as
+        :hover, however it doesn’t have to be. Additionally the parent selector could be used to bind additional
+        selectors to its parent, such as &.featured.</p>
+    <pre><code>
+        a
+            color: #0087cc
+            &:hover
+                color: #ff7b29
+    </code></pre>
+
+    <h4>Parent Key Selector</h4>
+    <p>The parent selector may also be used as the key selector, adding qualifying selectors to make compound selectors.
+        There are an abundance of ways to use the parent selector as the key selector but perhaps one of the most
+        beneficial is inside of feature detection.</p>
+    <h5>Sass</h5>
+    <pre><code>
+        .btn
+            background: linear-gradient(#fff, #9799a7)
+            .no-cssgradients &
+                background: url("gradient.png") 0 0 repeat-x
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        .btn {
+            background: linear-gradient(#fff, #9799a7);
+          }
+          .no-cssgradients .btn {
+            background: url("gradient.png") 0 0 repeat-x;
+          }
+    </code></pre>
+
+    <h3>Comments</h3>
+    <p>Sass handles comments very similar to that of Haml. The standard CSS syntax, /* ... */, for comments works as
+        intended within Sass however there is also a syntax for silent comments to completely remove a comment or lines
+        of code from being compiled.</p>
+    <p>The syntax for silent comments is two forward slashes, //, and any content on that line or nested below it will
+        be omitted from computation.</p>
+
+    <h3>Variables</h3>
+    <p>Variables are one of the more sought after features of CSS that Sass provides. With Sass you can define variables
+        and then reuse them as necessary.</p>
+    <p>Variables are defined with a dollar sign, $, followed by the variable name. Between the variable name and value
+        is a colon followed by an empty space, such as $font-base: 1em. As for the value of the variable, it may be a
+        number, string, color, boolean, null, or a list of values separated by spaces or commas.</p>
+    <pre><code>
+        $font-base: 1em
+        $serif: "Helvetica Neue", Arial, "Lucida Grande", sans-serif
+
+        p
+            font: $font-base $serif
+    </code></pre>
+
+    <h4>Variable Interpolation</h4>
+    <p>For the most part variables may be used anywhere inside of a Sass document. However, they may occasionally need
+        to be interpolated using the syntax. A few instances of where variables need to be interpolated include when
+        being used in a class name, property name, or inside a string of plain text.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        $location: chicago
+        $offset: left
+
+        .#{$location}
+            #{$offset}: 20px
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        .chicago {
+            left: 20px;
+          }
+    </code></pre>
+
+    <h3>Calculations</h3>
+    <p>Sass also has the ability to do calculations in a variety of different manners. Calculations can handle most
+        problems, such as addition, subtraction, division, multiplication, and rounding.</p>
+    <p>Addition can be done by using the plus sign, +, and may be completed with or without units of measurement. When
+        done with units, the unit tied to the first number in the equation is the unit that will be used in the computed
+        value. For example, ten pixels plus one inch will equal 106 pixels. Subtraction is handled the same way as
+        addition but with the minus sign, -, instead.</p>
+    <p>Multiplication is completed with the asterisk sign, *, however only one of the numbers, if any, may include a
+        unit of measurement. Using the percent sign, %, will return the remainder of the two numbers upon being divided,
+        and as with multiplication, only allows one number, if any, to have a unit.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        width: 40px + 6
+        width: 40px - 6
+        width: 40px * 6
+        width: 40px % 6
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        width: 46px;
+        width: 34px;
+        width: 240px;
+        width: 4px;
+    </code></pre>
+
+    <h4>Division</h4>
+    <p>Division is a bit trickier in Sass as the forward slash, /, used to perform division is already used in some CSS
+        property values. Generally speaking, division will take place when any part of the value uses a variable, if the
+        value is wrapped in parentheses, or if the value is used as part of another equation.</p>
+    <p>When using one unit of measurement in division the value will reside in that unit. When using two units of
+        measurement, however, the resulting value will be unitless.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        width: 100px / 10
+        width: (100px / 10)
+        width: (100px / 10px)
+        $width: 100px
+        width: $width / 10
+        width: 5px - 100px / 10
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        width: 100px/10;
+        width: 10px;
+        width: 10;
+        width: 10px;
+        width: -5px;
+    </code></pre>
+
+    <h4>Detailed Math</h4>
+    <p>As one may expect, Sass is also capable of combining multiple math operations. Sass also recognizes which
+        operations to execute first based on the use of parentheses.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        $grid: 16
+        $column: 40px
+        $gutter: 20px
+        $container: ($column * $grid) + ($gutter * $grid)
+
+        width: $container
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        width: 960px;
+    </code></pre>
+
+    <h4>Number Functions</h4>
+    <p>By default Sass includes a handful of built in functions, many of which are used to manipulate number values as
+        wished.</p>
+    <p>The percentage() function turns a value into a percentage. The round() function rounds a value to the closest
+        whole number, defaulting to rounding up where necessary. The ceil() function rounds a value up to the closest
+        whole number, and the floor() function rounds a value down to the closest whole number. Lastly, the abs()
+        function finds the absolute value of a given number.</p>
+    <ul>
+        <li>percentage()</li>
+        <li>round()</li>
+        <li>ceil()</li>
+        <li>floor()</li>
+        <li>abs()</li>
+    </ul>
+
+    <h5>Sass</h5>
+    <pre><code>
+        width: percentage(2.5)
+        width: round(2.5px)
+        width: ceil(2.5px)
+        width: floor(2.5px)
+        width: abs(-2.5px)
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        width: 250%;
+        width: 3px;
+        width: 3px;
+        width: 2px;
+        width: 2.5px;
+    </code></pre>
+
+    <h3>Color</h3>
+    <p>Sass provides quite a bit of assistance in working with colors, providing a handful of different features to
+        alter and manipulate colors. One of the more popular color features in Sass is the ability to change a
+        hexadecimal color, or variable, and convert it into an RGBa value.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        color: rgba(#8ec63f, .25)
+
+        $green: #8ec63f
+        color: rgba($green, .25)
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        color: rgba(142, 198, 63, .25);
+    </code></pre>
+
+    <h4>Color Operations</h4>
+    <p>On top of numbers, math may additionally be performed on colors using addition, subtraction, multiplication, and
+        division. These computations are performed on the red, green, and blue components, changing them as intended.
+    </p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        color: #8ec63f + #666
+        color: #8ec63f * 2
+        color: rgba(142, 198, 63, .75) / rgba(255, 255, 255, .75)
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        color: #f4ffa5;
+        color: #ffff7e;
+        color: rgba(0, 0, 0, .75);
+    </code></pre>
+
+    <h4>Color Alterations</h4>
+    <p>Using color operators to perform calculations is helpful but can be a bit challenging as well. In this case color
+        alterations may be a better option. Color alterations provide the ability to inverse colors, find complementary
+        colors, mix colors together, or find the grayscale value of a color.</p>
+    <ul>
+        <li>invert()</li>
+        <li>complement()</li>
+        <li>mix()</li>
+        <li>grayscale()</li>
+    </ul>
+
+    <h5>Sass</h5>
+    <pre><code>
+        color: invert(#8ec63f)
+        color: complement(#8ec63f)
+        color: mix(#8ec63f, #fff)
+        color: mix(#8ec63f, #fff, 10%)
+        color: grayscale(#8ec63f)
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        color: #7139c0;
+        color: #773fc6;
+        color: #c6e29f;
+        color: #f3f9eb;
+        color: #838383;
+    </code></pre>
+    <h4>HSLa Color Alterations</h4>
+    <p>HSLa color alterations take things a step further, adding in even more alterations. Some of the more popular HSLa
+        color alterations include lighten(), darken(), saturate(), and desaturate().</p>
+    <ul>
+        <li>lighten()</li>
+        <li>darken()</li>
+        <li>saturate()</li>
+        <li>desaturate()</li>
+        <li>adjust-hue()</li>
+        <li>fade-in()</li>
+        <li>fade-out()</li>
+    </ul>
+
+    <h5>Sass</h5>
+    <pre><code>
+        color: lighten(#8ec63f, 50%)
+        color: darken(#8ec63f, 30%)
+        color: saturate(#8ec63f, 75%)
+        color: desaturate(#8ec63f, 25%)
+        color: adjust-hue(#8ec63f, 30)
+        color: adjust-hue(#8ec63f, -30)
+        color: fade-in(rgba(142, 198, 63, 0), .4)
+        color: fade-out(#8ec63f, .4)
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        color: white;
+        color: #3b5319;
+        color: #98ff06;
+        color: #89a75e;
+        color: #4ac63f;
+        color: #c6bb3f;
+        color: rgba(142, 198, 63, 0.4);
+        color: rgba(142, 198, 63, 0.6);
+    </code></pre>
+
+    <h4>Color Manipulation</h4>
+    <p>Outside of altering colors Sass can also directly manipulate colors. Manipulating colors provides the most
+        control over how to finely tune specific color properties. With this control also comes complexity, which is why
+        color manipulations are a bit less common than color alterations.</p>
+    <ul>
+        <li>
+            change-color() — Set any property of a color
+            $color, [$red], [$green], [$blue], [$hue], [$saturation], [$lightness], [$alpha]
+        </li>
+        <li>
+            adjust-color() — Incrementally manipulate any property of a color
+            $color, [$red], [$green], [$blue], [$hue], [$saturation], [$lightness], [$alpha]
+        </li>
+        <li>
+            scale-color() — Fluidly scale any percentage based on property of a color
+            $color, [$red], [$green], [$blue], [$saturation], [$lightness], [$alpha]
+        </li>
+    </ul>
+
+    <h5>Sass</h5>
+    <pre><code>
+        color: change-color(#8ec63f, $red: 60, $green: 255)
+        color: adjust-color(#8ec63f, $hue: 300, $lightness: 50%)
+        color: scale-color(#8ec63f, $lightness: 25%, $alpha: 30%)
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        color: #3cff3f;
+        color: white;
+        color: #aad46f;
+    </code></pre>
+
+    <h3>Extends</h3>
+    <p>Extends provide a way to easily share and reuse styles without having to explicitly repeat code or use additional
+        classes, providing a perfect way to keep code modular. Both elements and class selectors may be used as an
+        extend, and there is even a placeholder selector built just for extends.</p>
+    <p>Extends are established by using the @extend rule followed by the selector to extend. Instead of duplicating the
+        property and values, the original selector receives and additional selector, that of which is from the selector
+        calling the extend.</p>
+    <p>In all, this provides a way to quickly reuse code without driving up code weight. Additionally, extends parley
+        nicely with OOCSS and SMACSS.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        .alert
+            border-radius: 10px
+            padding: 10px 20px
+
+        .alert-error
+            @extend .alert
+            background: #f2dede
+            color: #b94a48
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        .alert,
+        .alert-error {
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+        .alert-error {
+            background: #f2dede;
+            color: #b94a48;
+        }
+    </code></pre>
+
+    <h4>Placeholder Selector Extend</h4>
+    <p>To avoid building a bunch of unused classes purely for extends we can use what is known as a placeholder
+        selector. The placeholder selector is initialized with a percentage sign, %, and is never directly compiled into
+        CSS. Instead, it is used to attach selectors to when it is called with an extend. In the refined example below
+        notice how the .alert selector never makes its way into the CSS.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        %alert
+            border-radius: 10px
+            padding: 10px 20px
+
+        .alert-error
+            @extend %alert
+            background: #f2dede
+            color: #b94a48
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        .alert-error {
+            border-radius: 10px;
+            padding: 10px 20px;
+          }
+        .alert-error {
+            background: #f2dede;
+            color: #b94a48;
+          }
+    </code></pre>
+
+    <h4>Element Selector Extend</h4>
+    <p>As with classes, extends also work with standard element selectors too.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        h2
+            color: #9c6
+            span
+                text-decoration: underline
+
+        .sub-heading
+            @extend h2
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        h2, .sub-heading  {
+            color: #9c6;
+          }
+        h2 span, .sub-heading span {
+            text-decoration: underline;
+          }
+    </code></pre>
+
+    <h3>Mixins</h3>
+    <p>Mixins provide a way to easily template properties and values, then share them amongst different selectors.
+        Mixins differ from extends as mixins allow arguments to be passed in where extends are fixed values.</p>
+    <p>Mixins are identified using the @mixin rule followed by any potential arguments, then any styles are outlined
+        below the rule. To call a mixin from within a selector use the plus sign, +, followed by the name of the mixin
+        and any desired argument values if needed.</p>
+    <p>It is worth nothing that SCSS handles mixins a bit different. Instead of using a plus sign to call a mixin SCSS
+        use an @include rule.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        @mixin btn($color, $color-hover)
+            color: $color
+            &:hover
+                color: $color-hover
+
+        .btn
+            +btn($color: #fff, $color-hover: #9799a7)
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        .btn {
+            color: #fff;
+          }
+        .btn:hover {
+            color: #9799a7;
+          }
+    </code></pre>
+
+    <h4>Default Arguments</h4>
+    <p>Using the same example from above we can also specify default argument values, which may be over written if
+        wished.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        @mixin btn($color: #fff, $color-hover: #9799a7)
+            color: $color
+            &:hover
+                color: $color-hover
+
+        .btn
+            +btn($color-hover: #9799a7)
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        .btn {
+            color: #fff;
+          }
+        .btn:hover {
+            color: #9799a7;
+          }
+    </code></pre>
+    
+    <h4>Variable Arguments</h4>
+    <p>When one or more values need to be passed to an argument the variable name may end with ... inside of the mixin. In the example below with box shadows we can pass in comma separated values to the mixin.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        @mixin box-shadow($shadow...)
+            -webkit-box-shadow: $shadow
+            -moz-box-shadow: $shadow
+            box-shadow: $shadow
+
+        .shadows
+            +box-shadow(0 1px 2px #cecfd5, inset 0 0 5px #cecfd5)
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        .shadows {
+            -moz-box-shadow: 0 1px 2px #cecfd5, inset 0 0 5px #cecfd5;
+            -webkit-box-shadow: 0 1px 2px #cecfd5, inset 0 0 5px #cecfd5;
+            box-shadow: 0 1px 2px #cecfd5, inset 0 0 5px #cecfd5;
+          }
+    </code></pre>
+
+    <h3>Imports</h3>
+    <p>One of nicest parts of Sass is its ability to import multiple .scss or .sass files and condense them into one single file. Condensing all of the files into one allows for multiple stylesheets to be used for better organization without the worry of numerous HTTP request.</p>
+    <p>Instead of referencing all of the different stylesheets within an HTML document only reference the one Sass file importing all of the other stylesheets.</p>
+    <p>In the following examples, all three files _normalize.sass, _grid.sass, and _typography.sass are all compiled into one file. In the event that the Sass file importing all the other files is named styles.sass, and it is compiled into styles.css, then only styles.css needs to be referenced within the HTML document.</p>
+    
+    <h5>Sass</h5>
+    <pre><code>
+        @import "normalize"
+        @import "grid", "typography"
+    </code></pre>
+    <h5>Compiled HTML</h5>
+    <pre><code>
+        &lt;link href="styles.css" rel="stylesheet"&gt;
+    </code></pre>
+
+    <h3>Loops &amp; Conditionals</h3>
+    <p>For a bit more intricate styling Sass supports different control directives. Its important to understand these directives are not intended for everyday styling but for creating detailed mixins and helpers. Many of these will look familiar as they are borrowed from other programming languages.</p>
+
+    <h4>Operators</h4>
+    <p>Some loops and conditionals will require operators to determine their behavior, of which can be broken down into relational and comparison operators. Relational operators looks at the relationship between two entities, while comparison operators determine equality or different between to entities.</p>
+
+    <pre><code>
+        // Relational Operators
+        6 < 10   // true
+        4 <= 60  // true
+        8 > 2    // true
+        10 >= 10 // true
+
+        // Comparison Operators
+        #fff == white  // true
+        10 + 30 == 40  // true
+        normal != bold // true
+    </code></pre>
+
+    <h4>If Function</h4>
+    <p>The @if rule test an expressions then loads the styles beneath that expression should it return anything other than false or null. The initial if statement may be proceeded by several else if statements and one else statement. Once a statement is successful identified the styles directly tied to it will be applied.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        $shay: awesome
+
+        .shay
+            @if $shay == awesome
+                background: #ff7b29
+            @else if $shay == cool
+                background: #0087cc
+            @else
+                background: #333
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        .shay {
+            background: #ff7b29; 
+          }
+    </code></pre>
+
+    <h4>For Loop</h4>
+    <p>The @for rule outputs different sets of styles based off of a counter variable. There are two different forms available for for loops, those being to and through. The first, @for $i from 1 to 3 for example, will output styles up to, but not including, 3. The other form, @for $i from 1 through 3, will output styles up to, and including, 3.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        @for $col from 1 to 6
+            .col-#{$col}
+                width: 40px * $col
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        .col-1 {
+            width: 40px;
+        }
+        .col-2 {
+            width: 80px;
+        }
+        .col-3 {
+            width: 120px;
+        }
+        .col-4 {
+            width: 160px;
+        }
+        .col-5 {
+            width: 200px;
+        }
+    </code></pre>
+
+    <h4>Each Loop</h4>
+    <p>Simply enough, the @each rule returns styles for each item in a list. List may include multiple comma separated items.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        @each $class in uxd, rails, html, css
+            .#{$class}-logo
+                background: url("/img/#{$class}.jpg")
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        .uxd-logo {
+            background: url("/img/uxd.jpg");
+        }
+        .rails-logo {
+            background: url("/img/rails.jpg");
+        }
+        .html-logo {
+            background: url("/img/html.jpg");
+        }
+        .css-logo {
+            background: url("/img/css.jpg");
+        }
+    </code></pre>
+
+    <h4>While Loop</h4>
+    <p>The @while rule repeatedly returns styles until the statement becomes false. The directive accepts a handful of different operators and the counter variable can be finely controlled allowing for precise looping.</p>
+
+    <h5>Sass</h5>
+    <pre><code>
+        $heading: 1
+        @while $heading &lt;= 6
+            h#{$heading}
+                font-size: 2em - ($heading * .25em)
+            $heading: $heading + 1
+    </code></pre>
+    <h5>Compiled CSS</h5>
+    <pre><code>
+        h1 {
+            font-size: 1.75em;
+        }
+        h2 {
+            font-size: 1.5em;
+        }
+        h3 {
+            font-size: 1.25em;
+        }
+        h4 {
+            font-size: 1em;
+        }
+        h5 {
+            font-size: 0.75em;
+        }
+        h6 {
+            font-size: 0.5em;
+        }
+    </code></pre>
+
+    <h2>Other Preprocessors</h2>
+    <p>Haml and Sass are far from the only preprocessing languages available, including JavaScript preprocessors as well. Some of the other popular preprocessors including Jade, Slim, LESS, and CoffeeScript.</p>
+    <p>In the interest of brevity Haml and Sass were the only preprocessors covered in this lesson. They were also chosen because they are built using Ruby and fit right into Ruby on Rails applications. They’ve also got tremendous community support.</p>
+    <p>When it comes to choosing which, if any, preprocessor to use it is important to consider what is best for your team and project. Projects built in Node.js may likely better benefit from Jade. The most important aspect to consider, though, is what your team is accustomed to using. Do your research for each project and make the most educated decision.</p>
+
+</body>
+
+</html>
