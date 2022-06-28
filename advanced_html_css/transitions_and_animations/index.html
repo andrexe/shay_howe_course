@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transitions &amp; Animations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Transitions &amp; Animations</h1>
+
+    <p>One evolution with CSS3 was the ability to write behaviors for transitions and animations. Front end developers
+        have been asking for the ability to design these interactions within HTML and CSS, without the use of JavaScript
+        or Flash, for years. Now their wish has come true.</p>
+    <p>With CSS3 transitions you have the potential to alter the appearance and behavior of an element whenever a state
+        change occurs, such as when it is hovered over, focused on, active, or targeted.</p>
+    <p>Animations within CSS3 allow the appearance and behavior of an element to be altered in multiple keyframes.
+        Transitions provide a change from one state to another, while animations can set multiple points of transition
+        upon different keyframes.</p>
+
+    <h2>Transitions</h2>
+
+    <p>As mentioned, for a transition to take place, an element must have a change in state, and different styles must
+        be identified for each state. The easiest way for determining styles for different states is by using the
+        :hover, :focus, :active, and :target pseudo-classes.</p>
+    <p>There are four transition related properties in total, including transition-property, transition-duration,
+        transition-timing-function, and transition-delay. Not all of these are required to build a transition, with the
+        first three are the most popular.</p>
+    <p>In the example below the box will change its background color over the course of 1 second in a linear fashion.
+    </p>
+
+    <pre><code>
+        .box {
+            background: #2db34a;
+            transition-property: background;
+            transition-duration: 1s;
+            transition-timing-function: linear;
+        }
+        .box:hover {
+            background: #ff7b29;
+        }
+    </code></pre>
+
+    <h4>Transitions Demo</h4>
+
+    <div class="box">Box</div>
+
+    <h4>Vendor Prefixes</h4>
+
+    <p>The code above, as with the rest of the code samples in this lesson, are not vendor prefixed. This is
+        intentionally un-prefixed in the interest of keeping the code snippet small and comprehensible. For the best
+        support across all browsers, use vendor prefixes.</p>
+
+    <p>For reference, the prefixed version of the code above would look like the following.</p>
+
+    <pre><code>
+        .box {
+            background: #2db34a;
+            -webkit-transition-property: background;
+               -moz-transition-property: background;
+                 -o-transition-property: background;
+                    transition-property: background;
+            -webkit-transition-duration: 1s;
+               -moz-transition-duration: 1s;
+                 -o-transition-duration: 1s;
+                    transition-duration: 1s;
+            -webkit-transition-timing-function: linear;
+               -moz-transition-timing-function: linear;
+                 -o-transition-timing-function: linear;
+                    transition-timing-function: linear;
+        }
+        .box:hover {
+          background: #ff7b29;
+        }
+    </code></pre>
+
+    <h3>Transitional Property</h3>
+
+    <p>The transition-property property determines exactly what properties will be altered in conjunction with the other
+        transitional properties. By default, all of the properties within an element’s different states will be altered
+        upon change. However, only the properties identified within the transition-property value will be affected by
+        any transitions.</p>
+    <p>In the example above, the background property is identified in the transition-property value. Here the background
+        property is the only property that will change over the duration of 1 second in a linear fashion. Any other
+        properties included when changing an element’s state, but not included within the transition-property value,
+        will not receive the transition behaviors as set by the transition-duration or transition-timing-function
+        properties.</p>
+    <p>If multiple properties need to be transitioned they may be comma separated within the transition-property value.
+        Additionally, the keyword value all may be used to transition all properties of an element.</p>
+
+    <pre><code>
+        .box {
+            background: #2db34a;
+            border-radius: 6px
+            transition-property: background, border-radius;
+            transition-duration: 1s;
+            transition-timing-function: linear;
+        }
+        .box:hover {
+            background: #ff7b29;
+            border-radius: 50%;
+        }
+    </code></pre>
+
+    <h4>Transition Property Demo</h4>
+
+    <div class="transition-property">
+        <div class="box">Box</div>
+    </div>
+
+    <h4>Transitional Properties</h4>
+
+    <p>It is important to note, not all properties may be transitioned, only properties that have an identifiable
+        halfway point. Colors, font sizes, and the alike may be transitioned from one value to another as they have
+        recognizable values in-between one another. The display property, for example, may not be transitioned as it
+        does not have any midpoint. A handful of the more popular transitional properties include the following.</p>
+
+
+    <ul>
+        <li>background-color</li>
+        <li>background-position</li>
+        <li>border-color</li>
+        <li>border-width</li>
+        <li>border-spacing</li>
+        <li>bottom</li>
+        <li>clip</li>
+        <li>color</li>
+        <li>crop</li>
+        <li>font-size</li>
+        <li>font-weight</li>
+        <li>height</li>
+        <li>left</li>
+        <li>letter-spacing</li>
+        <li>line-height</li>
+        <li>margin</li>
+        <li>max-height</li>
+        <li>max-width</li>
+        <li>min-height</li>
+        <li>min-width</li>
+        <li>opacity</li>
+        <li>outline-color</li>
+        <li>outline-offset</li>
+        <li>outline-width</li>
+        <li>padding</li>
+        <li>right</li>
+        <li>text-indent</li>
+        <li>text-shadow</li>
+        <li>top</li>
+        <li>vertical-align</li>
+        <li>visibility</li>
+        <li>width</li>
+        <li>word-spacing</li>
+        <li>z-index</li>
+    </ul>
+
+    <h3>Transition Duration</h3>
+
+    <p>The duration in which a transition takes place is set using the transition-duration property. The value of this
+        property can be set using general timing values, including seconds (s) and milliseconds (ms). These timing
+        values may also come in fractional measurements, .2s for example.</p>
+    <p>When transitioning multiple properties you can set multiple durations, one for each property. As with the
+        transition-property property value, multiple durations can be declared using comma separated values. The order
+        of these values when identifying individual properties and durations does matter. For example, the first
+        property identified within the transition-property property will match up with the first time identified within
+        the transition-duration property, and so forth.</p>
+    <p>If multiple properties are being transitioned with only one duration value declared, that one value will be the
+        duration of all the transitioned properties.</p>
+
+    <pre><code>
+        .box {
+            background: #2db34a;
+            border-radius: 6px;
+            transition-property: background, border-radius;
+            transition-duration: .2s, 1s;
+            transition-timing-function: linear;
+          }
+          .box:hover {
+            background: #ff7b29;
+            border-radius: 50%;
+          }
+    </code></pre>
+
+    <h4>Transition Duration Demo</h4>
+
+    <div class="transition-duration">
+
+        <div class="box">Box</div>
+
+    </div>
+
+    <h3>Transition Timing</h3>
+
+    <p>The transition-timing-function property is used to set the speed in which a transition will move. Knowing the
+        duration from the transition-duration property a transition can have multiple speeds within a single duration. A
+        few of the more popular keyword values for the transition-timing-function property include linear, ease-in,
+        ease-out, and ease-in-out.</p>
+    <p>The linear keyword value identifies a transition moving in a constant speed from one state to another. The
+        ease-in value identifies a transition that starts slowly and speeds up throughout the transition, while the
+        ease-out value identifies a transition that starts quickly and slows down throughout the transition. The
+        ease-in-out value identifies a transition that starts slowly, speeds up in the middle, then slows down again
+        before ending.</p>
+    <p>Each timing function has a cubic-bezier curve behind it, which can be specifically set using the cubic-bezier(x1,
+        y1, x2, y2) value. Additional values include step-start, step-stop, and a uniquely identified
+        steps(number_of_steps, direction) value.</p>
+    <p>When transitioning multiple properties, you can identify multiple timing functions. These timing function values,
+        as with other transition property values, may be declared as comma separated values.</p>
+
+    <pre><code>
+        .box {
+            background: #2db34a;
+            border-radius: 6px;
+            transition-property: background, border-radius;
+            transition-duration: .2s, 1s;
+            transition-timing-function: linear, ease-in;
+        }
+        .box:hover {
+            background: #ff7b29;
+            border-radius: 50%;
+        }
+    </code></pre>
+
+    <h4>Transition Timing Demo</h4>
+
+    <div class="transition-timing">
+
+        <div class="box">Box</div>
+
+    </div>
+
+    <h3>Transition Delay</h3>
+
+    <p>On top of declaring the transition property, duration, and timing function, you can also set a delay with the
+        transition-delay property. The delay sets a time value, seconds or milliseconds, that determines how long a
+        transition should be stalled before executing. As with all other transition properties, to delay numerous
+        transitions, each delay can be declared as comma separated values.</p>
+
+    <pre><code>
+        .box {
+            background: #2db34a;
+            border-radius: 6px
+            transition-property: background, border-radius;
+            transition-duration: .2s, 1s;
+            transition-timing-function: linear, ease-in;
+            transition-delay: 0s, 1s;
+        }
+        .box:hover {
+            background: #ff7b29;
+            border-radius: 50%;
+        }
+    </code></pre>
+
+    <h4>Transition Delay Demo</h4>
+
+    <div class="transition-delay">
+
+        <div class="box">Box</div>
+
+    </div>
+
+    <h2>Shorthand Transitions</h2>
+
+    <p>Declaring every transition property individually can become quite intensive, especially with vendor prefixes.
+        Fortunately there is a shorthand property, transition, capable of supporting all of these different properties
+        and values. Using the transition value alone, you can set every transition value in the order of
+        transition-property, transition-duration, transition-timing-function, and lastly transition-delay. Do not use
+        commas with these values unless you are identifying numerous transitions.</p>
+    <p>To set numerous transitions at once, set each individual group of transition values, then use a comma to separate
+        each additional group of transition values.</p>
+
+    <pre><code>
+        .box {
+            background: #2db34a;
+            border-radius: 6px;
+            transition: background .2s linear, border-radius 1s ease-in 1s;
+        }
+        .box:hover {
+            background: #ff7b29;
+            border-radius: 50%;
+        }
+    </code></pre>
+
+    <h4>Shorthand Transitions Demo</h4>
+
+    <div class="shorthand-transitions">
+
+        <div class="box">Box</div>
+
+    </div>
+
+    <h3>Transitional Button</h3>
+
+    <pre><code>
+        &lt;button&gt;Awesome Button&lt;/button&gt;
+    </code></pre>
+
+    <pre><code>
+        button {
+            border: 0;
+            background: #0087cc;
+            border-radius: 4px;
+            box-shadow: 0 5px 0 #006599;
+            color: #fff;
+            cursor: pointer;
+            font: inherit;
+            margin: 0;
+            outline: 0;
+            padding: 12px 20px;
+            transition: all .1s linear;
+        }
+        button:active {
+            box-shadow: 0 2px 0 #006599;
+            transform: translateY(3px);
+        }
+    </code></pre>
+
+    <div class="transitional-button">
+
+        <button>Awesome Button</button>
+
+    </div>
+
+    <h3>Card Flip</h3>
+
+    <pre><code>
+        &lt;div class="card-container"&gt;
+            &lt;div class="card"&gt;
+            &lt;div class="side"&gt;...&lt;/div&gt;
+            &lt;div class="side back"&gt;...&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    </code></pre>
+
+    <pre><code>
+        .card-container {
+            height: 150px;
+            perspective: 600;
+            position: relative;
+            width: 150px;
+        }
+        .card {
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: all 1s ease-in-out;
+            width: 100%;
+        }
+        .card:hover {
+            transform: rotateY(180deg);
+        }
+        .card .side {
+            backface-visibility: hidden;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+        }
+        .card .back {
+            transform: rotateY(180deg);
+        }
+    </code></pre>
+
+    <div class="card-container">
+        <div class="card">
+            <div class="side"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/jimmy.jpg"
+                    alt="Jimmy Eat World"></div>
+            <div class="side back">Jimmy Eat World</div>
+        </div>
+    </div>
+
+    <h2>Animations</h2>
+
+    <p>Transitions do a great job of building out visual interactions from one state to another, and are perfect for
+        these kinds of single state changes. However, when more control is required, transitions need to have multiple
+        states. In return, this is where animations pick up where transitions leave off.</p>
+
+    <h3>Animations Keyframes</h3>
+
+    <p>To set multiple points at which an element should undergo a transition, use the @keyframes rule. The @keyframes
+        rule includes the animation name, any animation breakpoints, and the properties intended to be animated.</p>
+
+    <pre><code>
+        @keyframes slide {
+            0% {
+              left: 0;
+              top: 0;
+            }
+            50% {
+              left: 244px;
+              top: 100px;
+            }
+            100% {
+              left: 488px;
+              top: 0;
+            }
+          }
+    </code></pre>
+
+    <h4>Vendor Prefixing the Keyframe Rule</h4>
+    <p>The @keyframes rule must be vendor prefixed, just like all of the other transition and animation properties. The
+        vendor prefixes for the @keyframes rule look like the following:</p>
+    <ul>
+        <li>@-moz-keyframes</li>
+        <li>@-o-keyframes</li>
+        <li>@-webkit-keyframes</li>
+    </ul>
+
+    <p>The animation above is named slide, stated directly after the opening @keyframes rule. The different keyframe
+        breakpoints are set using percentages, starting at 0% and working to 100% with an intermediate breakpoint at
+        50%. The keywords from and to could be used in place of 0% and 100% if wished. Additional breakpoints, besides
+        50%, may also be stated. The element properties to be animated are listed inside each of the breakpoints, left
+        and top in the example above.</p>
+    <p>It is important to note, as with transitions only individual properties may be animated. Consider how you might
+        move an element from top to bottom for example. Trying to animate from top: 0; to bottom: 0; will not work,
+        because animations can only apply a transition within a single property, not from one property to another. In
+        this case, the element will need to be animated from top: 0; to top: 100%;.</p>
+
+    <h4>Animations Keyframes Demo</h4>
+    <p>Hover over the ball below to see the animation in action.</p>
+
+    <div class="animation-keyframes">
+
+        <div class="stage">
+            <figure class="ball"></figure>
+        </div>
+
+    </div>
+
+    <h3>Animation Name</h3>
+
+    <p>Once the keyframes for an animation have been declared they need to be assigned to an element. To do so, the
+        animation-name property is used with the animation name, identified from the @keyframes rule, as the property
+        value. The animation-name declaration is applied to the element in which the animation is to be applied to.</p>
+
+    <pre><code>
+        .stage:hover .ball {
+            animation-name: slide;
+          }
+    </code></pre>
+
+    <p>Using the animation-name property alone isn’t enough though. You also need to declare an animation-duration
+        property and value so that the browser knows how long an animation should take to complete.</p>
+
+    <h3>Animation Duration, Timing Function, & Delay</h3>
+
+    <p>Once you have declared the animation-name property on an element, animations behave similarly to transitions.
+        They include a duration, timing function, and delay if desired. To start, animations need a duration declared
+        using the animation-duration property. As with transitions, the duration may be set in seconds or milliseconds.
+    </p>
+
+    <pre><code>
+        .stage:hover .ball {
+            animation-name: slide;
+            animation-duration: 2s;
+          }
+    </code></pre>
+
+    <p>Using the animation-name property alone isn’t enough though. You also need to declare an animation-duration
+        property and value so that the browser knows how long an animation should take to complete.</p>
+
+    <h3>Animation Duration, Timing Function, &amp; Delay</h3>
+
+    <p>Once you have declared the animation-name property on an element, animations behave similarly to transitions.
+        They include a duration, timing function, and delay if desired. To start, animations need a duration declared
+        using the animation-duration property. As with transitions, the duration may be set in seconds or milliseconds.
+    </p>
+
+    <pre><code>
+        .stage:hover .ball {
+            animation-name: slide;
+            animation-duration: 2s;
+        }
+    </code></pre>
+
+    <p>A timing function and delay can be declared using the animation-timing-function and animation-delay properties
+        respectively. The values for these properties mimic and behave just as they do with transitions.</p>
+
+    <pre><code>
+        .stage:hover .ball {
+            animation-name: slide;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-delay: .5s;
+        }
+    </code></pre>
+
+    <p>The animation below should cause the ball to bounce once while moving to the left, however only when hovering
+        over the stage.</p>
+
+    <pre><code>
+        &lt;div class="stage"&gt;
+            &lt;figure class="ball"&gt;&lt;/figure&gt;
+        &lt;/div&gt;
+    </code></pre>
+
+    <pre><code>
+        @keyframes slide {
+            0% {
+              left: 0;
+              top: 0;
+            }
+            50% {
+              left: 244px;
+              top: 100px;
+            }
+            100% {
+              left: 488px;
+              top: 0;
+            }
+          }
+          .stage {
+            height: 150px;
+            position: relative;
+          }
+          .ball {
+              height: 50px;
+              position: absolute;
+              width: 50px;
+          }
+          .stage:hover .ball {
+            animation-name: slide;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-delay: .5s;
+          }
+    </code></pre>
+
+    <div class="animation">
+
+        <div class="stage">
+            <figure class="ball"></figure>
+        </div>
+
+    </div>
+
+    <h2>Customizing Animations</h2>
+
+    <p>Animations also provide the ability to further customize an element’s behavior, including the ability to declare
+        the number of times an animation runs, as well as the direction in which an animation completes.</p>
+
+    <h3>Animation Iteration</h3>
+
+    <p>By default, animations run their cycle once from beginning to end and then stop. To have an animation repeat
+        itself numerous times the animation-iteration-count property may be used. Values for the
+        animation-iteration-count property include either an integer or the infinite keyword. Using an integer will
+        repeat the animation as many times as specified, while the infinite keyword will repeat the animation
+        indefinitely in a never ending fashion.</p>
+
+    <pre><code>
+        .stage:hover .ball {
+            animation-name: slide;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-delay: .5s;
+            animation-iteration-count: infinite;
+          }
+    </code></pre>
+
+    <div class="animation-iteration">
+
+        <div class="stage">
+            <figure class="ball"></figure>
+        </div>
+
+    </div>
+
+    <h3>Animation Direction</h3>
+
+    <p>On top of being able to set the number of times an animation repeats, you may also declare the direction an
+        animation completes using the animation-direction property. Values for the animation-direction property include
+        normal, reverse, alternate, and alternate-reverse.</p>
+    <p>The normal value plays an animation as intended from beginning to end. The reverse value will play the animation
+        exactly opposite as identified within the @keyframes rule, thus starting at 100% and working backwards to 0%.
+    </p>
+    <p>The alternate value will play an animation forwards then backwards. Within the keyframes that includes running
+        forward from 0% to 100% and then backwards from 100% to 0%. Using the animation-iteration-count property may
+        limit the number of times an animation runs both forwards and backwards. The count starts at 1 running an
+        animation forwards from 0% to 100%, then adds 1 running an animation backwards from 100% to 0%. Combining for a
+        total of 2 iterations. The alternate value also inverses any timing functions when playing in reverse. If an
+        animation uses the ease-in value going from 0% to 100%, it then uses the ease-out value going from 100% to 0%.
+    </p>
+    <p>Lastly, the alternate-reverse value combines both the alternate and reverse values, running an animation
+        backwards then forwards. The alternate-reverse value starts at 100% running to 0% and then back to 100% again.
+    </p>
+
+    <pre><code>
+        .stage:hover .ball {
+            animation-name: slide;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-delay: .5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+          }
+    </code></pre>
+
+    <div class="animation-direction">
+
+        <div class="stage">
+            <figure class="ball"></figure>
+        </div>
+
+    </div>
+
+    <h3>Animation Play State</h3>
+
+    <p>The animation-play-state property allows an animation to be played or paused using the running and paused keyword
+        values respectively. When you play a paused animation, it will resume running from its current state rather than
+        starting from the very beginning again.</p>
+    <p>In the example below the animation-play-state property is set to paused when making the stage active by clicking
+        on it. Notice how the animation will temporarily pause until you let up on the mouse.</p>
+
+    <pre><code>
+        .stage:hover .ball {
+            animation-name: slide;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-delay: .5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+          }
+          .stage:active .ball {
+            animation-play-state: paused;
+          }
+    </code></pre>
+
+    <div class="animation-play-state">
+
+        <div class="stage">
+            <figure class="ball"></figure>
+        </div>
+
+    </div>
+
+    <h3>Animation Fill Mode</h3>
+
+    <p>The animation-fill-mode property identifies how an element should be styled either before, after, or before and
+        after an animation is run. The animation-fill-mode property accepts four keyword values, including none,
+        forwards, backwards, and both.</p>
+    <p>The none value will not apply any styles to an element before or after an animation has been run.</p>
+    <p>The forwards value will keep the styles declared within the last specified keyframe. These styles may, however,
+        be affected by the animation-direction and animation-iteration-count property values, changing exactly where an
+        animation ends.</p>
+    <p>The backwards value will apply the styles within the first specified keyframe as soon as being identified, before
+        the animation has been run. This does include applying those styles during any time that may be set within an
+        animation delay. The backwards value may also be affected by the animation-direction property value.</p>
+    <p>Lastly, the both value will apply the behaviors from both the forwards and backwards values.</p>
+
+    <pre><code>
+        .stage:hover .ball {
+            animation-name: slide;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-delay: .5s;
+            animation-fill-mode: forwards;
+          }
+          .stage:active .ball {
+            animation-play-state: paused;
+          }
+    </code></pre>
+
+    <div class="animation-fill-mode">
+
+        <div class="stage">
+            <figure class="ball"></figure>
+        </div>
+
+    </div>
+
+    <h2>Shorthand Animations</h2>
+
+    <p>Fortunately animations, just like transitions, can be written out in a shorthand format. This is accomplished
+        with one animation property, rather than multiple declarations. The order of values within the animation
+        property should be animation-name, animation-duration, animation-timing-function, animation-delay,
+        animation-iteration-count, animation-direction, animation-fill-mode, and lastly animation-play-state.</p>
+
+    <pre><code>
+        .stage:hover .ball {
+            animation: slide 2s ease-in-out .5s infinite alternate;
+          }
+          .stage:active .ball {
+            animation-play-state: paused;
+          }
+    </code></pre>
+
+    <div class="shorthand-animations">
+
+        <div class="stage">
+            <figure class="ball"></figure>
+        </div>
+
+    </div>
+
+
+    <div id="target"></div>
+</body>
+
+</html>
