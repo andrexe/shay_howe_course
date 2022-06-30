@@ -1,0 +1,62 @@
+pre {
+    overflow: scroll;
+    background-color: #e8e8e8;
+    border-radius: 0.3em;
+}
+
+code {
+    background-color: #e8e8e8;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100vw;
+    padding: 0;
+}
+
+li {
+    margin: 1em 1.8em;
+}
+
+button {
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    outline: 0;
+}
+
+/* With CSS Gradient Styles */
+
+.cssgradients button {
+    border: 1px solid #0080c2;
+    background: linear-gradient(#00a2f5, #0087cc);
+    border-radius: 6px;
+    padding: 15px 30px;
+}
+
+.cssgradients button:hover {
+    background: linear-gradient(#1ab1ff, #009beb);
+}
+
+.cssgradients button:active {
+    box-shadow: inset 0 1px 10px rgba(255, 255, 255, .5);
+}
+
+/* Without CSS Gradient Styles */
+
+.no-cssgradients button {
+    background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/no-cssgradients-btn.png") 0 0 no-repeat;
+    padding: 16px 31px;
+}
+
+.no-cssgradients button:hover {
+    background-position: 0 -49px;
+}
+
+.no-cssgradients button:active {
+    background-position: 0 -98px;
+}
