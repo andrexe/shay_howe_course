@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extending Semantics &amp; Accessibility</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Extending Semantics &amp; Accessibility</h1>
+
+    <p>Semantics and accessibility are naturally part of HTML by design, however they are not fully leveraged unless
+        used accordingly. Knowing how to write semantic and accessible code properly takes an understanding of how
+        semantics and accessibility work, and how users and machines interpret them. Writing semantic and accessible
+        code isn’t incredibly difficult, but it can be time consuming. In the long run, however, the benefits win out.
+    </p>
+    <p>One of the more important parts to remember when writing semantic and accessible code is to do your best to
+        leverage the standard markup language. Do your best to write the cleanest code possible, and take pride in your
+        work. Generally speaking, don’t use a meaningless element where another element might make more semantic sense,
+        using a div where a h1 would be better fitted for example. Use semantic elements and attributes, as well as
+        microdata and WAI-ARIA to extend the value of your code.</p>
+    <p>Additionally, be an advocate for semantics and accessibility. Tell others why you’ve written certain code, and
+        provide reasoning why certain modules of content are marked up in a specific way. Outline goals and objectives
+        within your code, and explain how those goals and objectives are being accomplished. The practice of writing
+        semantic and accessible code is growing, however adoption at large has not yet been achieved. Be an advocate for
+        the code you write.</p>
+
+    <h2>Semantic Motivation</h2>
+
+    <p>Occasionally, one may ask if semantics really make a difference. You may hear they slow down development, are
+        poorly supported, or that they are even opinionated. While this may have some validity, you still need to retain
+        integrity and continue to write the best code possible, for semantics provide a larger meaning in writing code.
+    </p>
+    <p>The fact of the matter is, semantics largely benefit everyone. For starters, semantics provide a shared and
+        unambiguous meaning to content. Semantics give content solid structure and value, while also favoring
+        accessibility, providing better user interfaces and more defined information to assistive technologies. Search
+        and globalization is more permanent with semantics, making it easier to serve content internationally and making
+        it more search engine friendly. Should that not be enough, semantics also promote interoperability, allowing the
+        exchange and use of information across different platforms and devices.</p>
+    <p>It’s safe to say semantics are important, and here to stay. To briefly recap, semantics provide:</p>
+    <ul>
+        <li>Unambiguous, shared meaning within content</li>
+        <li>Accessibility</li>
+        <li>Search and globalization</li>
+        <li>Interoperability</li>
+    </ul>
+
+    <h2>Structural Semantics</h2>
+
+    <p>Within the beginner’s guide we discuss the use of structural semantics, specifically using the header, nav,
+        article, section, aside, and footer elements. These elements are used to provide additional background context
+        to the content within them, communicating their core meaning to web browsers and other devices. This is
+        important, as it provides a better way to outline and structure pages, not to mention a more meaningful solution
+        than divisions.</p>
+
+    <h3>Hiding Content</h3>
+
+    <p>Every now and then you may want to hide a block of content on the page, perhaps showing or hiding an element
+        depending on a user’s state. For example, having a success message hidden from a user until they complete a
+        desired action. Most commonly, this is accomplished with the display: none; CSS declaration. While this does
+        work, it is semantically incorrect.</p>
+    <p>A better option is to use the hidden Boolean attribute, which is a global attribute available to all elements for
+        use. Functionally it performs the same way as the CSS declaration, but semantically it represents an element
+        that should be hidden, or ignored, for the time being. Screen readers and other devices will recognize this,
+        temporarily skipping it, where they may not done so with the CSS declaration.</p>
+
+    <pre><code>
+        &lt;!-- Good --&gt;
+        &lt;div hidden&gt;...&lt;/div&gt;
+
+        &lt;!-- Not good --&gt;
+        &lt;div style="display: none;"&gt;...&lt;/div&gt;
+    </code></pre>
+
+    <p>Imagine a blind user attempting to fill out a form and the first piece of content, before even filling out the
+        form, is a success message. This is a poor user experience, and one that can easily be fixed using proper
+        semantics.</p>
+
+    <h2>Text Level Semantics</h2>
+    <p>The majority of content on the web lives within text, and we primarily browse the Internet looking for this
+        content. Using the proper semantic markup for text makes it easier for users to find what they need.</p>
+
+    <h3>Bolding Text</h3>
+
+    <p>There are a few different ways to make text bold, including multiple elements and the font weight CSS property.
+        The two main elements used in this case include strong and b. While these two elements have the same
+        presentation they have completely different semantic meanings.</p>
+    <p>The strong element outlines text that has a strong importance. On the contrasting side, the b element identifies
+        text that is to be stylistically offset, without importance. Generally speaking, the b element should be used
+        solely as a styling hook to change the presentation of an element, where the strong element should be used to
+        identify significantly important text.</p>
+
+    <pre><code>
+        &lt;!-- Strong importance --&gt;
+        &lt;strong&gt;Caution:&lt;/strong&gt; Falling rocks.
+
+        &lt;!-- Stylistically offset --&gt;
+        This recipe calls for &lt;b&gt;bacon&lt;/b&gt; and &lt;b&gt;baconnaise&lt;/b&gt;.
+    </code></pre>
+
+    <!-- Strong importance -->
+    <p><strong>Caution:</strong> Falling rocks.</p>
+
+    <!-- Stylistically offset -->
+    <p>This recipe calls for <b>bacon</b> and <b>baconnaise</b>.</p>
+
+    <h3>Italicizing Text</h3>
+
+    <p>Italicizing text falls in line with that of bolding text, where we can use multiple elements or the font style
+        CSS property to achieve a desired presentation. When italicizing text, the two elements most commonly used are
+        em and i. Again, these share the same presentation, yet have completely different semantic meanings.</p>
+    <p>The em element places a stressed emphasis on text, while the i element identifies text to be expressed in an
+        alternate voice or tone. Using the em element really drives prominence with an added importance. On the other
+        hand, the i element is primarily used within dialog or prose, offsetting text without any added emphasis or
+        importance.</p>
+
+    <pre><code>
+        &lt;!-- Stressed emphasis --&gt;
+        I &lt;em&gt;love&lt;/em&gt; Chicago!
+
+        &lt;!-- Alternative voice or tone --&gt;
+        The name &lt;i&gt;Shay&lt;/i&gt; means a gift.
+    </code></pre>
+
+    <!-- Stressed emphasis -->
+    <p>I <em>love</em> Chicago!</p>
+
+    <!-- Alternative voice or tone -->
+    <p>The name <i>Shay</i> means a gift.</p>
+
+    <h4>Using i for Icons</h4>
+
+    <p>Recently there has been a small movement of front end programmers using the i element for including icons on a
+        page, specifically as seen within Bootstrap. The i element is used as a hook, to which a class then determines
+        which icon background image to apply to the element. Depending on how closely you wish to follow semantics this
+        may or may not be an acceptable practices.</p>
+
+    <h3>Underlining Text</h3>
+
+    <p>Continuing the pattern of having multiple elements with the same presentation, underlining text is no different.
+        There are a couple of different elements we can use as well as the text decoration CSS property. In this case,
+        the two primary elements used to underline text are ins and u.</p>
+    <p>The ins element is used to identify text that has been recently added to the document, and the u element simply
+        refers to an unarticulated annotation.</p>
+    <p>For more semantic code, the ins element may be used with the cite and datetime attributes. The datetime attribute
+        identifies when the content was added to the document, and the cite attribute provides a machine readable source
+        providing reference for the addition, perhaps documentation or a request ticket.</p>
+    <p>The u element is typically used to label text as a proper name, often in another language, or to point out a
+        misspelling.</p>
+    <p>Underlining text does require a bit of additional care, as it may be confused with a hyperlink. By default
+        hyperlinks are underlined, and thus have become a standard design practice. Underlining text that is not a
+        hyperlink can confuse users and cause quite a bit of frustration. Use underlines with caution.</p>
+
+    <pre><code>
+        &lt;!-- Added to the document --&gt;
+        &lt;ins cite="http://learn.shayhowe.com" datetime="2012-07-01"&gt;
+            Updated: This website now contains an advanced guide.
+        &lt;/ins&gt;
+        
+        &lt;!-- Unarticulated annotation --&gt;
+        &lt;u&gt;Urushihara Yuuji&lt;/u&gt; won &lt;u&gt;Sasuke 27&lt;/u&gt;.
+    </code></pre>
+
+    <!-- Added to the document -->
+    <p><ins cite="http://learn.shayhowe.com" datetime="2012-07-01">
+            Updated: This website now contains an advanced guide.
+        </ins></p>
+
+    <!-- Unarticulated annotation -->
+    <p><u>Urushihara Yuuji</u> won <u>Sasuke 27</u>.</p>
+
+    <h3>Striking Text</h3>
+
+    <p>Striking text follows the same pattern as before where different elements may be used, as may the text decoration
+        CSS property. The two properties most commonly used include del and s.</p>
+    <p>The del element is used to identify text deleted or removed from the document. As with the ins element, it may be
+        used with the cite and datetime attributes. Each of which hold the identical semantic values as before, cite
+        specifying a resource that explains the change and datetime identifying when the content was removed from the
+        document.</p>
+    <p>The s element identifies text that is no longer accurate or relevant.</p>
+
+    <pre><code>
+        &lt;!-- Deleted from the document --&gt;
+        I am an avid cyclist, &lt;del cite="http://shayhowe.com" datetime="2012-07-01"&gt;skateboarder&lt;/del&gt; and designer.
+
+        &lt;!-- No longer accurate or relevant --&gt;
+        &lt;s&gt;$24.99&lt;/s&gt; $19.99
+    </code></pre>
+
+    <!-- Deleted from the document -->
+    <p>I am an avid cyclist, <del cite="http://shayhowe.com" datetime="2012-07-01">skateboarder</del> and designer.</p>
+
+    <!-- No longer accurate or relevant -->
+    <p><s>$24.99</s> $19.99</p>
+
+    <h3>Highlighting Text</h3>
+
+    <p>To highlight text for reference purposes the mark element should be used. Added in HTML5, the mark element
+        provides a clean, semantic way to identify text, specifically for reference purposes without having to use an
+        un-semantic text level element.</p>
+
+    <pre><code>
+        &lt;!-- Highlighted for reference purposes --&gt;
+        Search results for &lt;mark&gt;'chicago'&lt;/mark&gt;.
+    </code></pre>
+
+    <!-- Highlighted for reference purposes -->
+    Search results for <mark>'chicago'</mark>.
+
+    <h3>Abbreviations</h3>
+
+    <p>Abbreviations, the shortened form of a phrase, can be semantically marked up in HTML using the abbr element. The
+        abbr element should be used along with the title attribute, of which includes the full value of the phrase being
+        abbreviated. The acronym element was originally used to distinguish acronyms from abbreviations but has since
+        been deprecated, and shouldn’t be used.</p>
+
+    <pre><code>
+        &lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;
+        &lt;abbr title="Cascading Style Sheets"&gt;CSS&lt;/abbr&gt;
+    </code></pre>
+
+    <abbr title="HyperText Markup Language">HTML</abbr>
+
+    <br>
+
+    <abbr title="Cascading Style Sheets">CSS</abbr>
+
+    <h3>Sub & Superscripts</h3>
+
+    <p>Subscripts and superscripts may be marked up accordingly using the sub and sup elements respectively. It is
+        important to note that these elements should be reserved for typographical conventions, not for presentational
+        purposes.</p>
+
+    <pre><code>
+        &lt;!-- Subscript --&gt;
+        H&lt;sub&gt;2&lt;/sub&gt;O
+
+        &lt;!-- Superscripts --&gt;
+        1&lt;sup&gt;st&lt;/sup&gt; Place
+    </code></pre>
+
+    <!-- Subscript -->
+    H<sub>2</sub>O
+
+    <br>
+
+    <!-- Superscripts -->
+    1<sup>st</sup> Place
+
+    <h3>Meter & Progress</h3>
+
+    <p>To gauge scale or indicate progress the meter and progress elements should be used. The meter element is used to
+        measure a fixed value, one that does not change over time, while the progress element measures the progress of a
+        increasing measurement.</p>
+    <p>The meter element may be used with the min, max, low, high, optimum, and value attributes. The min and max
+        attributes set the lower and upper bounds of the range, where the value attribute sets the exact measured value.
+        The low and high attributes identify what is to be considered the lower and higher parts of the range, while the
+        optimum value identifies the most favorable part of the range, of which may be in the lower or higher parts.</p>
+    <p>The progress element indicates progress rather than a fixed measurement. It specifically represents the
+        completion of a task, either by what is left to be completed or what has been completed thus far. There are two
+        attributes that may be applied to the progress element, value and max. The value attributes indicates where the
+        progress currently stands and the max attribute indicates what progress needs to be reached.</p>
+
+    <pre><code>
+        &lt;!-- Meter --&gt;
+        &lt;meter value="7" max="10"&gt;7 stars&lt;/meter&gt;
+        &lt;meter value="47" min="0" max="105" low="5" high="65" optimum="45"&gt;The car is moving at a decent average mile per hour.&lt;/meter&gt;
+
+        &lt;!-- Progress --&gt;
+        You are &lt;progress value="50" max="100"&gt;50%&lt;/progress&gt; complete.
+        &lt;progress value="50" min="0" max="100"&gt;Hold tight, you&#8217;re getting there.&lt;/progress&gt;
+    </code></pre>
+
+
+
+    <!-- Meter -->
+    <p>
+        <meter value="7" max="10">7 stars</meter>
+        <br>
+        <meter value="47" min="0" max="105" low="5" high="65" optimum="45">The car is moving at a decent average mile
+            per hour.</meter>
+    </p>
+
+    <!-- Progress -->
+    <p>
+        You are <progress value="50" max="100">50%</progress> complete.
+        <br>
+        <progress value="50" min="0" max="100">Hold tight, you&#8217;re getting there.</progress>
+    </p>
+
+    <h3>Time & Address</h3>
+
+    <p>Representing time and addresses in HTML can be accomplished using the time and address elements respectively. The
+        time element may be used with, or without, the datetime attribute, depending on how the text within the element
+        is formatted. If the content is formatted with the correct time stamp then the datetime attribute may be
+        omitted. Furthermore, if the time is representing the date or time of a publication the pubdate Boolean
+        attribute should be used.</p>
+    <p>The address element may be used to hold any contact information, including a physical address as well as a
+        website or email address. It should not include any further information than the contact information, and other
+        content needs to be placed outside of the address element.</p>
+
+    <pre><code>
+        &lt;!-- Time --&gt;
+        &lt;time&gt;2011-08-24&lt;/time&gt;
+        &lt;time datetime="2011-08-24" pubdate&gt;August 24th, 2011&lt;/time&gt;
+        &lt;time datetime="15:00"&gt;3pm&lt;/time&gt;
+        &lt;time datetime="2011-08-24T15:00"&gt;August 24th, 2011 at 3pm&lt;/time&gt;
+
+        &lt;!-- Address --&gt;
+        &lt;address&gt;
+        &lt;strong&gt;Shay Howe&lt;/strong&gt;&lt;br&gt;
+        &lt;a href="http://learn.shayhowe.com"&gt;http://learn.shayhowe.com&lt;/a&gt;&lt;br&gt;
+        &lt;a href="mailto:hello@awesome.com"&gt;hello@awesome.com&lt;/a&gt;&lt;br&gt;
+        600 W. Chicago Ave.&lt;br&gt;
+        Suite 620&lt;br&gt;
+        Chicago, IL 60654&lt;br&gt;
+        USA  
+        &lt;/address&gt;
+    </code></pre>
+
+    <!-- Time -->
+    <time>2011-08-24</time>
+    <time datetime="2011-08-24" pubdate>August 24th, 2011</time>
+    <time datetime="15:00">3pm</time>
+    <time datetime="2011-08-24T15:00">August 24th, 2011 at 3pm</time>
+
+    <!-- Address -->
+    <address>
+        <strong>Shay Howe</strong><br>
+        <a href="http://learn.shayhowe.com">http://learn.shayhowe.com</a><br>
+        <a href="mailto:hello@awesome.com">hello@awesome.com</a><br>
+        600 W. Chicago Ave.<br>
+        Suite 620<br>
+        Chicago, IL 60654<br>
+        USA
+    </address>
+
+    <h3>Presenting Code</h3>
+
+    <p>Presenting code snippets, or samples, within a page can be accomplished using either the code or pre elements, or
+        a combination of the two. The code element is commonly used to represent a fragment of code and is displayed in
+        the default monospace font. The code element is an inline level element and may be used within paragraphs of
+        text, or other block and inline level elements.</p>
+    <p>For large blocks of code, the pre element can be used in conjunction with the code element. The pre element
+        represent preformatted text and will display text exactly as it is typed, whitespace included. Nesting the code
+        element within the pre element semantically identifies larger samples of code, which include whitepsace,
+        displayed in a block level manner.</p>
+
+    <pre><code>
+        &lt;!-- Inline code samples --&gt;
+        Use the &lt;code&gt;article&lt;/code&gt; element.
+
+        &lt;!-- Larger, block level code snippets --&gt;
+        &lt;pre&gt;&lt;code&gt;body {
+        color: #666;
+        font: 14px/20px Arial, sans-serif;
+        }&lt;/code&gt;&lt;/pre&gt;
+    </code></pre>
+
+    <!-- Inline code samples -->
+    <p>Use the <code>article</code> element.
+    <p>
+
+        <!-- Larger, block level code snippets -->
+    <pre><code>
+        body {
+            color: #666;
+            font: 14px/20px Arial, sans-serif;
+        }
+    </code></pre>
+
+    <h3>Line & Word Breaks</h3>
+
+    <p>Occasionally you may want to include a line break within a line of text, in which case the br element may be
+        used. The br element does not have a closing tag, simply a beginning. In XHTML the br element is self closing,
+        including a trailing forward slash, <code>&lt;br /&gt;</code>.</p>
+    <p>Line breaks are not to be used for thematic grouping of content. Paragraphs or other elements are better suited
+        for thematic grouping. Line breaks are specifically to be used where line breaks exist as part of the content,
+        for example as within addresses and poems.</p>
+    <p>In addition to line breaks, you may also specify word breaking opportunities with the wbr element. Using the wbr
+        element in the middle of a word ensures that, should the word need to wrap two lines, it does in a legible
+        fashion.</p>
+
+    <pre><code>
+        &lt;!-- Line break --&gt;
+        600 W. Chicago Ave.&lt;br&gt;
+        Chicago, IL 60654&lt;br&gt;
+        USA
+
+        &lt;!-- Word break --&gt;
+        http://shay&lt;wbr&gt;howe.com
+    </code></pre>
+
+    <!-- Line break -->
+    <address>
+        600 W. Chicago Ave.<br>
+        Chicago, IL 60654<br>
+        USA
+    </address>
+
+    <!-- Word break -->
+    http://shay<wbr>howe.com
+
+    <h3>Side Comments</h3>
+
+    <p>Originally the small element was used to render text as one font size smaller than the default, purely for
+        presentational purposes. As we are aware, presentation and style should only live within CSS, not HTML. Within
+        HTML5, the small element preserves the presentation of being displayed at a smaller font size, however it
+        semantically means to be rendered as a side comments or small print. This often includes copyright information
+        or legal print.</p>
+
+    <pre><code>
+        &lt;!-- Side comments or small print --&gt;
+        &lt;small&gt;&copy; 2012 Shay Howe&lt;/small&gt;
+    </code></pre>
+
+    <!-- Side comments or small print -->
+    <small>&copy; 2012 Shay Howe</small>
+
+    <h3>Citations &amp; Quotes</h3>
+
+    <p>The beginner’s guide discusses citations and quotes, and when to use the cite, q, and blockquote elements
+        accordingly. As a quick reminder, the cite element refers to a title of work, the q element identifies dialog or
+        prose, and the blockquote element is used to code longer formed quotes, commonly from external sources.</p>
+
+    <h3>Hyperlink Attributes</h3>
+
+    <p>The beginner’s guide also outlines hyperlinks, and some of their different behaviors. What is not covered,
+        however, is some of the semantic benefits to hyperlinks, specifically with the use of the download and rel
+        attributes.</p>
+
+    <h4>Download Attribute</h4>
+
+    <p>The download attribute tells the browser to prompt a download for a file, rather than the default behavior of
+        navigation to the file. As an example, if the hyperlink reference attribute, href, is pointing to an image, the
+        browser will prompt a user to download the image instead of opening the image within the browser.</p>
+
+    <p>The download attribute can serve as a Boolean attribute, downloading the file as is, or it may contain a value,
+        of which becomes the file name once downloaded. Using a specific value here lets you name the file as you wish
+        on your server while still providing users with a meaningful name.</p>
+
+    <pre><code>
+        &lt;!-- Boolean --&gt;
+        &lt;a href="twitter-logo.png" download&gt;Twitter Logo&lt;/a&gt;
+
+        &lt;!-- With a value --&gt;
+        &lt;a href="twitter-logo.png" download="Logo"&gt;Twitter Logo&lt;/a&gt;
+    </code></pre>
+
+    <!-- Boolean -->
+    <a href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/twitter-logo.png" download>Twitter Logo</a>
+
+    <br>
+
+    <!-- With a value -->
+    <a href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/twitter-logo.png" download="Logo">Twitter Logo</a>
+
+    <h4>Relationship Attribute</h4>
+
+    <p>For any hyperlinks including a reference attribute, href, you may also include the relationship attribute, rel.
+        The rel attribute identifies the relationship between the current document and the document being referenced.
+        For example, when linking to a copyright statement the rel attribute value of copyright should be used.</p>
+
+    <pre><code>
+        &lt;a href="legal.html" rel="copyright"&gt;Terms of Use&lt;/a&gt;
+        &lt;a href="toc.html" rel="contents"&gt;Table of Contents&lt;/a&gt;
+    </code></pre>
+
+    <p>A few popular rel attribute values include:</p>
+
+    <ul>
+        <li>alternate</li>
+        <li>author</li>
+        <li>bookmark</li>
+        <li>help</li>
+        <li>license</li>
+        <li>next</li>
+        <li>nofollow</li>
+        <li>noreferrer</li>
+        <li>prefetch</li>
+        <li>prev</li>
+        <li>search</li>
+        <li>tag</li>
+    </ul>
+
+    <h2>Microdata</h2>
+
+    <p>Microdata is HTML extended with nested groups of name-value pairs that allow machines, including browsers and
+        search engines, to pick up additional semantics and information for rich content. Adding microdata to your
+        website is accomplished by using predetermined attributes and values. These attributes and values will then be
+        interpreted, and extended, as intended. Currently, the more popular uses of microdata reside within coding
+        contact information and calendar events, however there are encoding models for products, reviews, and more.</p>
+    <p>One example of microdata at work is within Google, where microdata is interpreted and used within search results
+        to display more relevant data. Often performing a search for a business location yields the address and sub
+        sequential contact information within the results. Chances are this information is being pulled from microdata
+        written on an existing website.</p>
+
+    <h4>Microdata vs. Microformats vs. RDFa</h4>
+
+    <p>There are actually a handful of rich, structured data standards, including microdata, microformats, and RDFa. All
+        of these have their pros and cons, and all of which are still viable to practice.</p>
+    <p>Microdata is the recommended format from Google, and other search engines, as well as part of the HTML5
+        specification. It uses findings from both microformats and RDFa to base it’s design around, thus looking to be a
+        solid choice, and the one covered here. It is, however, recommended you do your research, take the pulse of the
+        community, find what works best for your situation, and use that. Using one of these standards is substantially
+        better than not using any. Find what will provide the best benefit for your users.</p>
+
+    <h3>Outlining Microdata</h3>
+
+    <p>Microdata is identified using three main attributes, itemscope, itemtype, and itemprop.</p>
+    <p>The itemscope Boolean attribute declares the scope of each microdata item. Place this attribute on the parent
+        element where all of the microdata information pertaining to this item should reside.</p>
+    <p>Once you have determined the scope, use the itemtype attribute to identify what microdata vocabulary should be
+        used. Generally speaking, some of the more popular microdata item types have been outlined at Schema.org. There
+        are, however, other websites which outline additional, and different, item types. You may also write your own
+        item types should you find the need.</p>
+
+    <pre><code>
+        &lt;section itemscope itemtype="http://schema.org/Person"&gt;
+            ...
+          &lt;/section&gt;
+    </code></pre>
+
+    <p>Once the scope and type of the item have been determined, properties may then be set. These properties are
+        identified by different elements which include the itemprop attribute. The value of this attribute determines
+        what property is being referenced, and the content within the element itself most commonly determines the value
+        of the property.</p>
+
+    <pre><code>
+        &lt;section itemscope itemtype="http://schema.org/Person"&gt;
+            &lt;h1 itemprop="name"&gt;Shay Howe&lt;/h1&gt;
+          &lt;/section&gt;
+    </code></pre>
+
+    <p>Some elements, however, do not get their itemprop value from the content within the element. Instead, their value
+        is determined from the value of another attribute on the element. The table below outlines these one-off
+        elements and what attribute is used for their property value.</p>
+
+    <table class="tabular-data">
+        <thead>
+            <tr>
+                <th>Element</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-title="Element"><code>&lt;meta&gt;</code></td>
+                <td data-title="Value"><code>content</code> attribute</td>
+            </tr>
+            <tr>
+                <td data-title="Element"><code>&lt;audio&gt;</code>, <code>&lt;embed&gt;</code>,
+                    <code>&lt;iframe&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;source&gt;</code>,
+                    <code>&lt;video&gt;</code>
+                </td>
+                <td data-title="Value"><code>src</code> attribute</td>
+            </tr>
+            <tr>
+                <td data-title="Element"><code>&lt;a&gt;</code>, <code>&lt;area&gt;</code>, <code>&lt;link&gt;</code>
+                </td>
+                <td data-title="Value"><code>href</code> attribute</td>
+            </tr>
+            <tr>
+                <td data-title="Element"><code>&lt;object&gt;</code></td>
+                <td data-title="Value"><code>data</code> attribute</td>
+            </tr>
+            <tr>
+                <td data-title="Element"><code>&lt;time&gt;</code></td>
+                <td data-title="Value"><code>datetime</code> attribute</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Person Microdata</h3>
+
+    <p>When referring to a person the person microdata library should be used. Below is an example of what a person
+        microdata item might look like. Please notice, the person item type is used, as is the postal address item type
+        within it. Also, please notice the different item properties and their corresponding values.</p>
+
+    <pre><code>
+        &lt;section itemscope itemtype="http://schema.org/Person"&gt;
+            &lt;strong itemprop="name"&gt;Shay Howe&lt;/strong&gt;
+            &lt;img src="shay.jpg" itemprop="image" alt="Shay Howe"&gt;
+            &lt;div itemprop="jobTitle"&gt;Designer and Front-end Developer&lt;/div&gt;
+            &lt;a href="http://www.shayhowe.com" itemprop="url"&gt;shayhowe.com&lt;/a&gt;
+            &lt;div itemprop="telephone"&gt;(555) 123-4567&lt;/div&gt;
+            &lt;a href="mailto:shay@awesome.com" itemprop="email"&gt;shay@awesome.com&lt;/a&gt;
+            &lt;address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"&gt;
+              &lt;span itemprop="streetAddress"&gt;600 W. Chicago Ave.&lt;/span&gt;
+              &lt;span itemprop="addressLocality"&gt;Chicago&lt;/span&gt;,
+              &lt;abbr itemprop="addressRegion" title="Illinois"&gt;IL&lt;/abbr&gt;
+              &lt;span itemprop="postalCode"&gt;60654&lt;/span&gt;
+            &lt;/address&gt;
+          &lt;/section&gt;
+    </code></pre>
+
+    <section itemscope itemtype="http://schema.org/Person">
+        <strong itemprop="name">Shay Howe</strong>
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/shay.jpg" itemprop="image" alt="Shay Howe">
+        <div itemprop="jobTitle">Designer and Front-end Developer</div>
+        <a href="http://www.shayhowe.com" itemprop="url">shayhowe.com</a>
+        <div itemprop="telephone">(555) 123-4567</div>
+        <a href="mailto:shay@awesome.com" itemprop="email">shay@awesome.com</a>
+        <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="streetAddress">600 W. Chicago Ave.</span>
+            <span itemprop="addressLocality">Chicago</span>,
+            <abbr itemprop="addressRegion" title="Illinois">IL</abbr>
+            <span itemprop="postalCode">60654</span>
+        </address>
+    </section>
+
+    <p>Please keep in mind, this code is for an individual person. Should you wish to refer to an organization, a more
+        specific organization microdata library should be followed.</p>
+
+    <h3>Event Microdata</h3>
+
+    <p>The event microdata is very similar to that of the person microdata, however it uses the event microdata library
+        instead. Common property similarities between the two can be identified, as can some of the nested item types.
+    </p>
+
+    <pre><code>
+        &lt;section itemscope itemtype="http://schema.org/Event"&gt;
+            &lt;a itemprop="url" href="#"&gt;
+              &lt;span itemprop="name"&gt;Styles Conference&lt;/span&gt;
+            &lt;/a&gt;
+            &lt;time itemprop="startDate" datetime="2014-08-2409:00"&gt;Sunday, August 24, 2014 at 9:00 a.m.&lt;/time&gt;
+            &lt;div itemprop="location" itemscope itemtype="http://schema.org/Place"&gt;
+              &lt;a itemprop="url" href="http://www.thechicagotheatre.com/"&gt;Chicago Theatre&lt;/a&gt;
+              &lt;address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"&gt;
+                &lt;div itemprop="streetAddress"&gt;175 N. State St.&lt;/div&gt;
+                &lt;span itemprop="addressLocality"&gt;Chicago&lt;/span&gt;,
+                &lt;abbr itemprop="addressRegion" title="Illinois"&gt;IL&lt;/abbr&gt;
+                &lt;span itemprop="postalCode"&gt;60601&lt;/span&gt;
+              &lt;/address&gt;
+            &lt;/div&gt;
+          &lt;/section&gt;
+    </code></pre>
+
+    <section itemscope itemtype="http://schema.org/Event">
+        <a itemprop="url" href="#">
+            <span itemprop="name">Styles Conference</span>
+        </a>
+        <time itemprop="startDate" datetime="2014-08-2409:00">Sunday, August 24, 2014 at 9:00 a.m.</time>
+        <div itemprop="location" itemscope itemtype="http://schema.org/Place">
+            <a itemprop="url" href="http://www.thechicagotheatre.com/">Chicago Theatre</a>
+            <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                <div itemprop="streetAddress">175 N. State St.</div>
+                <span itemprop="addressLocality">Chicago</span>,
+                <abbr itemprop="addressRegion" title="Illinois">IL</abbr>
+                <span itemprop="postalCode">60601</span>
+            </address>
+        </div>
+    </section>
+
+    <p>Microdata provides a lot of ways to further extend the content of a page. We have only touched the surface here.
+        Further information on microdata may be found at Dive Into HTML5 Microdata and WHATWG Microdata.</p>
+
+    <h2>WAI-ARIA</h2>
+
+    <p>WAI-ARIA, also know as Web Accessibility Initiative — Accessible Rich Internet Applications, is a specification
+        that helps make web pages and applications more accessible to those with disabilities. Specifically, WAI-ARIA
+        helps define roles (for what blocks of content do), states (for how blocks of content are configured), and
+        additional properties to support assistive technologies.</p>
+
+    <h3>Roles</h3>
+
+    <p>Setting WAI-ARIA roles is accomplished using the role attribute. These roles then specify what certain elements
+        and blocks of content do on a page.</p>
+
+    <pre><code>
+        &lt;header role="banner"&gt;...&lt;/header&gt;
+    </code></pre>
+
+    <p>WAI-ARIA roles break down into four different categories, including abstract, widget, document structure, and
+        landmark roles. For this lesson we will focus primarily on the document structure and landmark roles. Document
+        structure roles define the organizational structure of content on a page, while landmark roles define the
+        regions of a page. Specific role values for each of these categories are broken out below.</p>
+
+    <h4>Document Structure Roles</h4>
+
+    <ul>
+
+        <li>article</li>
+        <li>columnheader</li>
+        <li>definition</li>
+        <li>directory</li>
+        <li>document</li>
+        <li>group</li>
+        <li>heading</li>
+        <li>img</li>
+        <li>list</li>
+        <li>listitem</li>
+        <li>math</li>
+        <li>note</li>
+        <li>presentation</li>
+        <li>region</li>
+        <li>row</li>
+        <li>rowheader</li>
+        <li>separator</li>
+        <li>toolbar</li>
+
+    </ul>
+
+    <h4>Landmark Roles</h4>
+
+    <ul>
+
+        <li>application</li>
+        <li>banner</li>
+        <li>complementary</li>
+        <li>contentinfo</li>
+        <li>form</li>
+        <li>main</li>
+        <li>navigation</li>
+        <li>search</li>
+
+    </ul>
+
+    <p>HTML5 introduced a handful of new structural elements which commonly match up against the document structure and
+        landmark roles. Exactly how these roles match up against specific elements may be seen below. Please notice, the
+        header and footer elements do not have an implied role, and the acceptable roles for these elements may only be
+        used once per page. That said, if you have multiple header and footer elements on a page the banner and
+        contentinfo roles should be applied on the elements directly tied to the document from a top level perspective,
+        not elements nested within other regions of the document structure.</p>
+
+    <table class="tabular-data">
+        <thead>
+            <tr>
+                <th>Element</th>
+                <th>Implied Role</th>
+                <th>Acceptable Roles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-title="Element"><code>article</code></td>
+                <td data-title="Implied Role"><code>article</code></td>
+                <td data-title="Acceptable Roles"><code>application</code>, <code>article</code>, <code>document</code>,
+                    or <code>main</code></td>
+            </tr>
+            <tr>
+                <td data-title="Element"><code>aside</code></td>
+                <td data-title="Implied Role"><code>complementary</code></td>
+                <td data-title="Acceptable Roles"><code>complementary</code>, <code>note</code>, or <code>search</code>
+                </td>
+            </tr>
+            <tr>
+                <td data-title="Element"><code>footer</code></td>
+                <td data-title="Implied Role">—</td>
+                <td data-title="Acceptable Roles"><code>contentinfo</code> (Only once per page)</td>
+            </tr>
+            <tr>
+                <td data-title="Element"><code>header</code></td>
+                <td data-title="Implied Role">—</td>
+                <td data-title="Acceptable Roles"><code>banner</code> (Only once per page)</td>
+            </tr>
+            <tr>
+                <td data-title="Element"><code>nav</code></td>
+                <td data-title="Implied Role"><code>navigation</code></td>
+                <td data-title="Acceptable Roles"><code>navigation</code></td>
+            </tr>
+            <tr>
+                <td data-title="Element"><code>section</code></td>
+                <td data-title="Implied Role"><code>region</code></td>
+                <td data-title="Acceptable Roles"><code>alert</code>, <code>alertdialog</code>,
+                    <code>application</code>, <code>contentinfo</code>, <code>dialog</code>, <code>document</code>,
+                    <code>log</code>, <code>main</code>, <code>marquee</code>, <code>region</code>, <code>search</code>,
+                    or <code>status</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Combining the elements with their matched roles in HTML5 would look like the following code snippet.</p>
+
+    <pre><code>
+        &lt;header role="banner"&gt;
+            &lt;nav role="navigation"&gt;...&lt;/nav&gt;
+        &lt;/header&gt;
+        &lt;article role="article"&gt;
+            &lt;section role="region"&gt;...&lt;/section&gt;
+        &lt;/article&gt;
+        &lt;aside role="complementary"&gt;...&lt;/aside&gt;
+        &lt;footer role="contentinfo"&gt;...&lt;/footer&gt;
+    </code></pre>
+
+    <h3>States & Properties</h3>
+
+    <p>In combination with WAI-ARIA roles there are also states and properties which help inform assistive technologies how content is configured. Like roles, the states and properties are broken into four categories, including widget attributes, live region attributes, drag-and-drop attributes, and relationship attributes</p>
+    <p>The widget attributes support widget roles and are specific to the user interface and where users take actions. The live region attributes may be applied to any element and are used to indicate content changes for assistive technologies, on page alerts and notifications for example. Drag-and-drop attributes supply information about drag-and-drop interface elements and provide alternate behaviors to assistive technologies. Lastly, relationship attributes outline the relationship between elements when the document structure cannot be determined.</p>
+
+
+
+
+
+
+
+</body>
+
+</html>
